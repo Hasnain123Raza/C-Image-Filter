@@ -1,5 +1,14 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
+/* The default filter */
+#undef DEFAULT_FILTER_ID
+
+/* The default input filename */
+#undef DEFAULT_INPUT_FILENAME
+
+/* The default output filename */
+#undef DEFAULT_OUTPUT_FILENAME
+
 /* Name of package */
 #undef PACKAGE
 

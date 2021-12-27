@@ -3461,6 +3461,16 @@ fi
 
 # Checks for library functions.
 
+
+$as_echo "#define DEFAULT_INPUT_FILENAME \"input.jpg\"" >>confdefs.h
+
+
+$as_echo "#define DEFAULT_OUTPUT_FILENAME \"output.jpg\"" >>confdefs.h
+
+
+$as_echo "#define DEFAULT_FILTER_ID \"0\"" >>confdefs.h
+
+
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "argumentparser.h": "c",
+        "appcommon.h": "c"
+    }
+}

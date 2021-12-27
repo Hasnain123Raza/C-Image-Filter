@@ -103,7 +103,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
-am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT)
+am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
+	$(top_builddir)/src/app/cimgfil-ArgumentParser.$(OBJEXT)
 cimgfil_OBJECTS = $(am_cimgfil_OBJECTS)
 cimgfil_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -121,7 +122,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po
+am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
+	$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -277,9 +279,15 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-cimgfil_SOURCES = $(top_srcdir)/src/main.c
-cimgfil_EXTRA_DIST = 
-cimgfil_CPPFLAGS = -I$(top_srcdir)/include
+cimgfil_SOURCES = $(top_srcdir)/src/main.c \
+    $(top_srcdir)/src/app/ArgumentParser.c
+
+EXTRA_DIST = $(top_srcdir)/include/app/AppCommon.h \
+    $(top_srcdir)/include/app/ArgumentParser.h
+
+cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
+    -I$(top_srcdir)/include/app
+
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 
@@ -384,6 +392,15 @@ $(top_builddir)/src/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/cimgfil-main.$(OBJEXT):  \
 	$(top_builddir)/src/$(am__dirstamp) \
 	$(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/app/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/app
+	@: > $(top_builddir)/src/app/$(am__dirstamp)
+$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/app/$(DEPDIR)
+	@: > $(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/app/cimgfil-ArgumentParser.$(OBJEXT):  \
+	$(top_builddir)/src/app/$(am__dirstamp) \
+	$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
 
 cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEPENDENCIES) 
 	@rm -f cimgfil$(EXEEXT)
@@ -392,11 +409,13 @@ cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEP
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f $(top_builddir)/src/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/app/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -433,6 +452,20 @@ $(top_builddir)/src/cimgfil-main.obj: $(top_builddir)/src/main.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/main.c' object='$(top_builddir)/src/cimgfil-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/cimgfil-main.obj `if test -f '$(top_builddir)/src/main.c'; then $(CYGPATH_W) '$(top_builddir)/src/main.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/main.c'; fi`
+
+$(top_builddir)/src/app/cimgfil-ArgumentParser.o: $(top_builddir)/src/app/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ArgumentParser.o -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/app/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ArgumentParser.c' object='$(top_builddir)/src/app/cimgfil-ArgumentParser.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/app/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ArgumentParser.c
+
+$(top_builddir)/src/app/cimgfil-ArgumentParser.obj: $(top_builddir)/src/app/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ArgumentParser.obj -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/app/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ArgumentParser.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ArgumentParser.c' object='$(top_builddir)/src/app/cimgfil-ArgumentParser.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/app/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ArgumentParser.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -694,6 +727,8 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-test -z "$(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)
 	-test -z "$(top_builddir)/src/$(am__dirstamp)" || rm -f $(top_builddir)/src/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/app/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -705,6 +740,7 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 		-rm -f $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po
+	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -753,6 +789,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
 		-rm -f $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po
+	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

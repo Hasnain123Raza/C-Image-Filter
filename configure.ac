@@ -19,4 +19,8 @@ AC_PROG_CC
 
 # Checks for library functions.
 
+AC_DEFINE([DEFAULT_INPUT_FILENAME], ["input.jpg"], [The default input filename])
+AC_DEFINE([DEFAULT_OUTPUT_FILENAME], ["output.jpg"], [The default output filename])
+AC_DEFINE([DEFAULT_FILTER_ID], ["0"], [The default filter])
+
 AC_OUTPUT
