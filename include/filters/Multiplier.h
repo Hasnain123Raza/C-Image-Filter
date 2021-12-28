@@ -2,6 +2,7 @@
 #define MULTIPLIER_H
 
 #include <argz.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include "EngineCommon.h"

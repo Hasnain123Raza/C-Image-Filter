@@ -75,20 +75,26 @@ static int Function(Chunk *chunk, void *userData)
 
     for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
     {
-        unsigned char sourceRed = sourceData[index * 3 + 0];
-        unsigned char sourceGreen = sourceData[index * 3 + 1];
-        unsigned char sourceBlue = sourceData[index * 3 + 2];
+        unsigned char sourceRed = sourceData[index * 3 + 0] + 1;
+        unsigned char sourceGreen = sourceData[index * 3 + 1] + 1;
+        unsigned char sourceBlue = sourceData[index * 3 + 2] + 1;
 
         float targetRed = sourceRed * multipliers[0] + sourceGreen * multipliers[1] + sourceBlue * multipliers[2];
         float targetGreen = sourceRed * multipliers[3] + sourceGreen * multipliers[4] + sourceBlue * multipliers[5];
         float targetBlue = sourceRed * multipliers[6] + sourceGreen * multipliers[7] + sourceBlue * multipliers[8];
 
+        if (targetRed < -255.0f)
+            targetRed = -255.0f;
         if (targetRed > 255.0f)
             targetRed = 255.0f;
-        
+
+        if (targetGreen < -255.0f)
+            targetGreen = -255.0f;
         if (targetGreen > 255.0f)
             targetGreen = 255.0f;
 
+        if (targetBlue < -255.0f)
+            targetBlue = -255.0f;
         if (targetBlue > 255.0f)
             targetBlue = 255.0f;
 
