@@ -33,6 +33,9 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_MAGENTA:
             filter = &Magenta;
             break;
+        case FILTER_SEPIA:
+            filter = &Sepia;
+            break;
         case FILTER_NEGATIVE:
             filter = &Negative;
             break;
@@ -41,6 +44,9 @@ Filter *getFilterFromFilterId(FilterID filterId)
             break;
         case FILTER_BRIGHTNESS:
             filter = &Brightness;
+            break;
+        case FILTER_SATURATION:
+            filter = &Saturation;
             break;
         default:
             break;

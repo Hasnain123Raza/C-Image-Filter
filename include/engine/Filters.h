@@ -12,9 +12,11 @@
 #include "Yellow.h"
 #include "Cyan.h"
 #include "Magenta.h"
+#include "Sepia.h"
 #include "Negative.h"
 #include "Grayscale.h"
 #include "Brightness.h"
+#include "Saturation.h"
 
 Filter *getFilterFromFilterId(FilterID filterId);
 
