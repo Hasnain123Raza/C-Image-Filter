@@ -33,6 +33,15 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_MAGENTA:
             filter = &Magenta;
             break;
+        case FILTER_NEGATIVE:
+            filter = &Negative;
+            break;
+        case FILTER_GRAYSCALE:
+            filter = &Grayscale;
+            break;
+        case FILTER_BRIGHTNESS:
+            filter = &Brightness;
+            break;
         default:
             break;
     }

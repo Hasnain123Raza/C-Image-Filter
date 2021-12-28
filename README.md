@@ -35,14 +35,28 @@ This argument is used to specify the filter to use. It is optional and defaults 
 The avaialable filters are as follows:
 
 0   FILTER_NONE
+
 1   FILTER_MULTIPLIER
+
 2   FILTER_MONOCHROME
+
 3   FILTER_RED
+
 4   FILTER_GREEN
+
 5   FILTER_BLUE
+
 6   FILTER_YELLOW
+
 7   FILTER_CYAN
+
 8   FILTER_MAGENTA
+
+9   FILTER_NEGATIVE
+
+10  FILTER_GRAYSCALE
+
+11  FILTER_BRIGHTNESS
 
 ### Filter Arguments
 

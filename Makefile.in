@@ -120,7 +120,10 @@ am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Blue.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Yellow.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Cyan.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Magenta.$(OBJEXT)
+	$(top_builddir)/src/filters/cimgfil-Magenta.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Negative.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Grayscale.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Brightness.$(OBJEXT)
 cimgfil_OBJECTS = $(am_cimgfil_OBJECTS)
 cimgfil_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -148,11 +151,14 @@ am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
 	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po \
 	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
@@ -328,7 +334,10 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/filters/Blue.c \
     $(top_srcdir)/src/filters/Yellow.c \
     $(top_srcdir)/src/filters/Cyan.c \
-    $(top_srcdir)/src/filters/Magenta.c
+    $(top_srcdir)/src/filters/Magenta.c \
+    $(top_srcdir)/src/filters/Negative.c \
+    $(top_srcdir)/src/filters/Grayscale.c \
+    $(top_srcdir)/src/filters/Brightness.c
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/application/ArgumentParser.h \
@@ -348,7 +357,10 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/filters/Blue.h \
     $(top_srcdir)/include/filters/Yellow.h \
     $(top_srcdir)/include/filters/Cyan.h \
-    $(top_srcdir)/include/filters/Magenta.h
+    $(top_srcdir)/include/filters/Magenta.h \
+    $(top_srcdir)/include/filters/Negative.h \
+    $(top_srcdir)/include/filters/Grayscale.h \
+    $(top_srcdir)/include/filters/Brightness.h
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
     -I$(top_srcdir)/include/application \
@@ -536,6 +548,15 @@ $(top_builddir)/src/filters/cimgfil-Cyan.$(OBJEXT):  \
 $(top_builddir)/src/filters/cimgfil-Magenta.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Negative.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Grayscale.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Brightness.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
 
 cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEPENDENCIES) 
 	@rm -f cimgfil$(EXEEXT)
@@ -562,11 +583,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po@am__quote@ # am--include-marker
@@ -844,6 +868,48 @@ $(top_builddir)/src/filters/cimgfil-Magenta.obj: $(top_builddir)/src/filters/Mag
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Magenta.c' object='$(top_builddir)/src/filters/cimgfil-Magenta.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Magenta.obj `if test -f '$(top_builddir)/src/filters/Magenta.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Magenta.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Magenta.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Negative.o: $(top_builddir)/src/filters/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Negative.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Negative.c' object='$(top_builddir)/src/filters/cimgfil-Negative.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Negative.c
+
+$(top_builddir)/src/filters/cimgfil-Negative.obj: $(top_builddir)/src/filters/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Negative.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Negative.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Negative.c' object='$(top_builddir)/src/filters/cimgfil-Negative.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Negative.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Grayscale.o: $(top_builddir)/src/filters/Grayscale.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Grayscale.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Grayscale.o `test -f '$(top_builddir)/src/filters/Grayscale.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Grayscale.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Grayscale.c' object='$(top_builddir)/src/filters/cimgfil-Grayscale.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Grayscale.o `test -f '$(top_builddir)/src/filters/Grayscale.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Grayscale.c
+
+$(top_builddir)/src/filters/cimgfil-Grayscale.obj: $(top_builddir)/src/filters/Grayscale.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Grayscale.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Grayscale.obj `if test -f '$(top_builddir)/src/filters/Grayscale.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Grayscale.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Grayscale.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Grayscale.c' object='$(top_builddir)/src/filters/cimgfil-Grayscale.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Grayscale.obj `if test -f '$(top_builddir)/src/filters/Grayscale.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Grayscale.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Grayscale.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Brightness.o: $(top_builddir)/src/filters/Brightness.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Brightness.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Brightness.o `test -f '$(top_builddir)/src/filters/Brightness.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Brightness.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Brightness.c' object='$(top_builddir)/src/filters/cimgfil-Brightness.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Brightness.o `test -f '$(top_builddir)/src/filters/Brightness.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Brightness.c
+
+$(top_builddir)/src/filters/cimgfil-Brightness.obj: $(top_builddir)/src/filters/Brightness.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Brightness.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Brightness.obj `if test -f '$(top_builddir)/src/filters/Brightness.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Brightness.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Brightness.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Brightness.c' object='$(top_builddir)/src/filters/cimgfil-Brightness.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Brightness.obj `if test -f '$(top_builddir)/src/filters/Brightness.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Brightness.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Brightness.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -1133,11 +1199,14 @@ distclean: distclean-am
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
@@ -1198,11 +1267,14 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po

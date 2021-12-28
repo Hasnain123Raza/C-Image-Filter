@@ -17,7 +17,10 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/filters/Blue.c \
     $(top_srcdir)/src/filters/Yellow.c \
     $(top_srcdir)/src/filters/Cyan.c \
-    $(top_srcdir)/src/filters/Magenta.c
+    $(top_srcdir)/src/filters/Magenta.c \
+    $(top_srcdir)/src/filters/Negative.c \
+    $(top_srcdir)/src/filters/Grayscale.c \
+    $(top_srcdir)/src/filters/Brightness.c
 
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
@@ -38,7 +41,10 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/filters/Blue.h \
     $(top_srcdir)/include/filters/Yellow.h \
     $(top_srcdir)/include/filters/Cyan.h \
-    $(top_srcdir)/include/filters/Magenta.h
+    $(top_srcdir)/include/filters/Magenta.h \
+    $(top_srcdir)/include/filters/Negative.h \
+    $(top_srcdir)/include/filters/Grayscale.h \
+    $(top_srcdir)/include/filters/Brightness.h
 
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
