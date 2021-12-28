@@ -27,19 +27,28 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     prefilters[0] = monochromeFilterRequest;
     monochromeFilterRequest->filterId = FILTER_MONOCHROME;
 
-    EngineArguments *arguments = (EngineArguments *)malloc(sizeof(EngineArguments));
-    if (!arguments)
+    EngineArguments *monochromeArguments = (EngineArguments *)malloc(sizeof(EngineArguments));
+    if (!monochromeArguments)
     {
         free(prefilters);
         free(monochromeFilterRequest);
         return 1;
     }
-    arguments->length = 0;
-    arguments->value = NULL;
-    argz_add(&arguments->value, &arguments->length, "1.0");
-    argz_add(&arguments->value, &arguments->length, "1.0");
-    argz_add(&arguments->value, &arguments->length, "0.0");
-    monochromeFilterRequest->arguments = arguments;
+    monochromeArguments->length = 0;
+    monochromeArguments->value = NULL;
+    char *alphaArgument = argz_next(filterRequest->arguments->value, filterRequest->arguments->length, NULL);
+    float alphaValue = 1.0f;
+    if (alphaArgument)
+        alphaValue = atof(alphaArgument);
+    alphaValue = alphaValue < 0.0f ? 0.0f : alphaValue > 1.0f ? 1.0f : alphaValue;
+    float multiplierValue = 1.0f - alphaValue;
+    int multiplierValueLength = snprintf(NULL, 0, "%f", multiplierValue);
+    char multiplierBuffer[multiplierValueLength + 1];
+    snprintf(multiplierBuffer, multiplierValueLength + 1, "%f", multiplierValue);
+    argz_add(&monochromeArguments->value, &monochromeArguments->length, "1.0");
+    argz_add(&monochromeArguments->value, &monochromeArguments->length, "1.0");
+    argz_add(&monochromeArguments->value, &monochromeArguments->length, multiplierBuffer);
+    monochromeFilterRequest->arguments = monochromeArguments;
 
     return 0;
 }

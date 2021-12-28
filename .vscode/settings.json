@@ -3,6 +3,7 @@
         "argumentparser.h": "c",
         "appcommon.h": "c",
         "imagereader.h": "c",
-        "enginecommon.h": "c"
+        "enginecommon.h": "c",
+        "type_traits": "c"
     }
 }
