@@ -76,9 +76,14 @@ For common data structures used in the engine, please refer to `include/engine/E
 
 ## Creating Filters
 
-1: To create a new filter, start by going into `include/engine/EngineCommon.h` and add your filter's ID to the `FilterID` enum. 
-2: Next, copy `include/filters/None.h` and paste it to `include/filters/{YourFilterName}.h`. In the header file, change the header guard and the extern variable name appropriately (same name as your filter's). 
-3: Next, copy `src/filters/None.c` and paste it to `src/filters/{YourFilterName}.c`. In the source file, change the include preprocessor directive and the Filter variable appropriately (same name as your filter's). 
-4: Navigate to `include/engine/Filters.h` and add an include preprocessor directive to include your filter's header file. 
-5: Navigate to `src/engine/Filters.c` and augment the case statement to properly return your filter. 
+1: To create a new filter, start by going into `include/engine/EngineCommon.h` and add your filter's ID to the `FilterID` enum.
+
+2: Next, copy `include/filters/None.h` and paste it to `include/filters/{YourFilterName}.h`. In the header file, change the header guard and the extern variable name appropriately (same name as your filter's).
+
+3: Next, copy `src/filters/None.c` and paste it to `src/filters/{YourFilterName}.c`. In the source file, change the include preprocessor directive and the Filter variable appropriately (same name as your filter's).
+
+4: Navigate to `include/engine/Filters.h` and add an include preprocessor directive to include your filter's header file.
+
+5: Navigate to `src/engine/Filters.c` and augment the case statement to properly return your filter.
+
 6: Finally, go into `Makefile.am` and add your filter's source file to `cimgfil_SOURCES` and your filter's header file to `EXTRA_DIST`.
