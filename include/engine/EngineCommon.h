@@ -10,6 +10,9 @@ typedef enum {
     FILTER_RED,
     FILTER_GREEN,
     FILTER_BLUE,
+    FILTER_YELLOW,
+    FILTER_CYAN,
+    FILTER_MAGENTA,
     TOTAL_FILTERS
 } FilterID;
 

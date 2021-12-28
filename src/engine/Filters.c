@@ -24,6 +24,15 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_BLUE:
             filter = &Blue;
             break;
+        case FILTER_YELLOW:
+            filter = &Yellow;
+            break;
+        case FILTER_CYAN:
+            filter = &Cyan;
+            break;
+        case FILTER_MAGENTA:
+            filter = &Magenta;
+            break;
         default:
             break;
     }

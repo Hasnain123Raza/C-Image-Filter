@@ -9,6 +9,9 @@
 #include "Red.h"
 #include "Green.h"
 #include "Blue.h"
+#include "Yellow.h"
+#include "Cyan.h"
+#include "Magenta.h"
 
 Filter *getFilterFromFilterId(FilterID filterId);
 
