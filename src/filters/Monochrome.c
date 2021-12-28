@@ -1,11 +1,5 @@
 #include "Monochrome.h"
 
-typedef struct {
-    float redModifier;
-    float greenModifier;
-    float blueModifier;
-} MonochromeUserData;
-
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations);
 static int Function(Chunk *chunk, void *userData);
 static void FreeUserData(void *userData);
@@ -13,17 +7,14 @@ static void FreeUserData(void *userData);
 Filter Monochrome = {
     .filterId = FILTER_MONOCHROME,
     .configurator = Configurator,
-    .function = Function,
+    .function = NULL,
 };
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations)
 {
-    MonochromeUserData *userData = (MonochromeUserData *)malloc(sizeof(MonochromeUserData));
-    if (!userData)
-        return 1;
-    userData->redModifier = 1.0f;
-    userData->greenModifier = 1.0f;
-    userData->blueModifier = 1.0f;
+    float redModifier = 1.0f;
+    float greenModifier = 1.0f;
+    float blueModifier = 1.0f;
 
     EngineArguments *arguments = filterRequest->arguments;
     char *redModifierArgument = argz_next(arguments->value, arguments->length, NULL);
@@ -31,38 +22,63 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     char *blueModifierArgument = greenModifierArgument ? argz_next(arguments->value, arguments->length, greenModifierArgument) : NULL;
 
     if (redModifierArgument)
-        userData->redModifier = atof(redModifierArgument);
+        redModifier = atof(redModifierArgument);
 
     if (greenModifierArgument)
-        userData->greenModifier = atof(greenModifierArgument);
+        greenModifier = atof(greenModifierArgument);
 
     if (blueModifierArgument)
-        userData->blueModifier = atof(blueModifierArgument);
+        blueModifier = atof(blueModifierArgument);
 
-    configurations->userData = userData;
-    configurations->freeUserData = FreeUserData;
+    FilterRequest **prefilters = (FilterRequest **)malloc(sizeof(FilterRequest *) * 2);
+    if (!prefilters)
+        return 1;
+    configurations->prefilters = prefilters;
+    prefilters[0] = NULL;
+    prefilters[1] = NULL;
+
+    FilterRequest *multiplierFilterRequest = (FilterRequest *)malloc(sizeof(FilterRequest));
+    if (!multiplierFilterRequest)
+    {
+        free(prefilters);
+        return 1;
+    }
+    prefilters[0] = multiplierFilterRequest;
+    multiplierFilterRequest->filterId = FILTER_MULTIPLIER;
+
+    EngineArguments *multiplierArguments = (EngineArguments *)malloc(sizeof(EngineArguments));
+    if (!multiplierArguments)
+    {
+        free(prefilters);
+        free(multiplierFilterRequest);
+        return 1;
+    }
+    multiplierArguments->length = 0;
+    multiplierArguments->value = NULL;
+    int redBufferLength = snprintf(NULL, 0, "%f", redModifier);
+    int greenBufferLength = snprintf(NULL, 0, "%f", greenModifier);
+    int blueBufferLength = snprintf(NULL, 0, "%f", blueModifier);
+    char redBuffer[redBufferLength + 1];
+    char greenBuffer[greenBufferLength + 1];
+    char blueBuffer[blueBufferLength + 1];
+    snprintf(redBuffer, redBufferLength + 1, "%f", redModifier);
+    snprintf(greenBuffer, greenBufferLength + 1, "%f", greenModifier);
+    snprintf(blueBuffer, blueBufferLength + 1, "%f", blueModifier);
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, redBuffer);
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, greenBuffer);
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, "0.0");
+    argz_add(&multiplierArguments->value, &multiplierArguments->length, blueBuffer);
+    multiplierFilterRequest->arguments = multiplierArguments;
 
     return 0;
 }
 
 static int Function(Chunk *chunk, void *userData)
 {
-    MonochromeUserData *monochromeUserData = (MonochromeUserData *)userData;
-    
-    unsigned char *sourceData = chunk->sourceImageData->data;
-    unsigned char *targetData = chunk->targetImageData->data;
-
-    for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
-    {
-        targetData[index * 3 + 0] = sourceData[index * 3 + 0] * monochromeUserData->redModifier;
-        targetData[index * 3 + 1] = sourceData[index * 3 + 1] * monochromeUserData->greenModifier;
-        targetData[index * 3 + 2] = sourceData[index * 3 + 2] * monochromeUserData->blueModifier;
-    }
-
     return 0;
-}
-
-static void FreeUserData(void *userData)
-{
-    free(userData);
 }

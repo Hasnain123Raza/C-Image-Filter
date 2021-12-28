@@ -9,6 +9,9 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_NONE:
             filter = &None;
             break;
+        case FILTER_MULTIPLIER:
+            filter = &Multiplier;
+            break;
         case FILTER_MONOCHROME:
             filter = &Monochrome;
             break;

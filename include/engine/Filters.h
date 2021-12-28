@@ -4,6 +4,7 @@
 #include "EngineCommon.h"
 
 #include "None.h"
+#include "Multiplier.h"
 #include "Monochrome.h"
 #include "Red.h"
 #include "Green.h"

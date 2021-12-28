@@ -5,10 +5,12 @@
 
 typedef enum {
     FILTER_NONE,
+    FILTER_MULTIPLIER,
     FILTER_MONOCHROME,
     FILTER_RED,
     FILTER_GREEN,
     FILTER_BLUE,
+    TOTAL_FILTERS
 } FilterID;
 
 typedef struct {

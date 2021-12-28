@@ -113,6 +113,7 @@ am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
 	$(top_builddir)/src/engine/cimgfil-FilterProcessor.$(OBJEXT) \
 	$(top_builddir)/src/engine/cimgfil-Filters.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-None.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Multiplier.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Red.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Green.$(OBJEXT) \
@@ -146,6 +147,7 @@ am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 am__mv = mv -f
@@ -313,6 +315,7 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/engine/FilterProcessor.c \
     $(top_srcdir)/src/engine/Filters.c \
     $(top_srcdir)/src/filters/None.c \
+    $(top_srcdir)/src/filters/Multiplier.c \
     $(top_srcdir)/src/filters/Monochrome.c \
     $(top_srcdir)/src/filters/Red.c \
     $(top_srcdir)/src/filters/Green.c \
@@ -329,6 +332,7 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/engine/FilterProcessor.h \
     $(top_srcdir)/include/engine/Filters.h \
     $(top_srcdir)/include/filters/None.h \
+    $(top_srcdir)/include/filters/Multiplier.h \
     $(top_srcdir)/include/filters/Monochrome.h \
     $(top_srcdir)/include/filters/Red.h \
     $(top_srcdir)/include/filters/Green.h \
@@ -496,6 +500,9 @@ $(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/filters/cimgfil-None.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Multiplier.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
 $(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
@@ -536,6 +543,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po@am__quote@ # am--include-marker
 
@@ -700,6 +708,20 @@ $(top_builddir)/src/filters/cimgfil-None.obj: $(top_builddir)/src/filters/None.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/None.c' object='$(top_builddir)/src/filters/cimgfil-None.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-None.obj `if test -f '$(top_builddir)/src/filters/None.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/None.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/None.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Multiplier.o: $(top_builddir)/src/filters/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Multiplier.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Multiplier.c' object='$(top_builddir)/src/filters/cimgfil-Multiplier.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Multiplier.c
+
+$(top_builddir)/src/filters/cimgfil-Multiplier.obj: $(top_builddir)/src/filters/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Multiplier.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Multiplier.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Multiplier.c' object='$(top_builddir)/src/filters/cimgfil-Multiplier.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Multiplier.c'; fi`
 
 $(top_builddir)/src/filters/cimgfil-Monochrome.o: $(top_builddir)/src/filters/Monochrome.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Monochrome.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Monochrome.c
@@ -1047,6 +1069,7 @@ distclean: distclean-am
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f Makefile
@@ -1108,6 +1131,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f Makefile

@@ -10,6 +10,7 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/engine/FilterProcessor.c \
     $(top_srcdir)/src/engine/Filters.c \
     $(top_srcdir)/src/filters/None.c \
+    $(top_srcdir)/src/filters/Multiplier.c \
     $(top_srcdir)/src/filters/Monochrome.c \
     $(top_srcdir)/src/filters/Red.c \
     $(top_srcdir)/src/filters/Green.c \
@@ -27,6 +28,7 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/engine/FilterProcessor.h \
     $(top_srcdir)/include/engine/Filters.h \
     $(top_srcdir)/include/filters/None.h \
+    $(top_srcdir)/include/filters/Multiplier.h \
     $(top_srcdir)/include/filters/Monochrome.h \
     $(top_srcdir)/include/filters/Red.h \
     $(top_srcdir)/include/filters/Green.h \
