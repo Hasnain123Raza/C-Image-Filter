@@ -5,7 +5,7 @@ const char *argp_program_version = PACKAGE_STRING;
 
 static int parse_opt(int key, char *arg, struct argp_state *state);
 
-int parseArguments(int argc, char *argv[], Configurations *configurations)
+int parseArguments(int argc, char *argv[], ApplicationConfigurations *configurations)
 {
     static struct argp_option options[] = {
         { "input", 'i', "FILENAME", OPTION_ARG_OPTIONAL, "Filename of input. Defaults to " DEFAULT_INPUT_FILENAME},
@@ -29,7 +29,7 @@ int parseArguments(int argc, char *argv[], Configurations *configurations)
 
 static int parse_opt(int key, char *arg, struct argp_state *state)
 {
-    Configurations *configurations = (Configurations *)state->input;
+    ApplicationConfigurations *configurations = (ApplicationConfigurations *)state->input;
 
     switch (key) {
         case 'i':

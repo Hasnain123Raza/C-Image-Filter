@@ -6,8 +6,8 @@
 #include <stdlib.h>
 
 #include "config.h"
-#include "AppCommon.h"
+#include "ApplicationCommon.h"
 
-int parseArguments(int argc, char *argv[], Configurations *configurations);
+int parseArguments(int argc, char *argv[], ApplicationConfigurations *configurations);
 
 #endif

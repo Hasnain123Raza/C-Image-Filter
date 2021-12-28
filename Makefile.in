@@ -104,12 +104,19 @@ am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
-	$(top_builddir)/src/app/cimgfil-ArgumentParser.$(OBJEXT) \
-	$(top_builddir)/src/app/cimgfil-ImageReader.$(OBJEXT) \
-	$(top_builddir)/src/app/cimgfil-ImageProcessor.$(OBJEXT) \
-	$(top_builddir)/src/app/cimgfil-ImageWriter.$(OBJEXT) \
-	$(top_builddir)/src/app/stbi/cimgfil-stb_image.$(OBJEXT) \
-	$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.$(OBJEXT)
+	$(top_builddir)/src/application/cimgfil-ArgumentParser.$(OBJEXT) \
+	$(top_builddir)/src/application/cimgfil-ImageReader.$(OBJEXT) \
+	$(top_builddir)/src/application/cimgfil-ImageProcessor.$(OBJEXT) \
+	$(top_builddir)/src/application/cimgfil-ImageWriter.$(OBJEXT) \
+	$(top_builddir)/src/application/stbi/cimgfil-stb_image.$(OBJEXT) \
+	$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.$(OBJEXT) \
+	$(top_builddir)/src/engine/cimgfil-FilterProcessor.$(OBJEXT) \
+	$(top_builddir)/src/engine/cimgfil-Filters.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-None.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Red.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Green.$(OBJEXT) \
+	$(top_builddir)/src/filters/cimgfil-Blue.$(OBJEXT)
 cimgfil_OBJECTS = $(am_cimgfil_OBJECTS)
 cimgfil_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -128,12 +135,19 @@ DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
-	$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po \
-	$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po \
-	$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po \
-	$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po \
-	$(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po \
-	$(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po \
+	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po \
+	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po \
+	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po \
+	$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po \
+	$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po \
+	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po \
+	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po \
+	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -290,26 +304,41 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 cimgfil_SOURCES = $(top_srcdir)/src/main.c \
-    $(top_srcdir)/src/app/ArgumentParser.c \
-    $(top_srcdir)/src/app/ImageReader.c \
-    $(top_srcdir)/src/app/ImageProcessor.c \
-    $(top_srcdir)/src/app/ImageWriter.c \
-    $(top_srcdir)/src/app/stbi/stb_image.c \
-    $(top_srcdir)/src/app/stbi/stb_image_write.c
+    $(top_srcdir)/src/application/ArgumentParser.c \
+    $(top_srcdir)/src/application/ImageReader.c \
+    $(top_srcdir)/src/application/ImageProcessor.c \
+    $(top_srcdir)/src/application/ImageWriter.c \
+    $(top_srcdir)/src/application/stbi/stb_image.c \
+    $(top_srcdir)/src/application/stbi/stb_image_write.c \
+    $(top_srcdir)/src/engine/FilterProcessor.c \
+    $(top_srcdir)/src/engine/Filters.c \
+    $(top_srcdir)/src/filters/None.c \
+    $(top_srcdir)/src/filters/Monochrome.c \
+    $(top_srcdir)/src/filters/Red.c \
+    $(top_srcdir)/src/filters/Green.c \
+    $(top_srcdir)/src/filters/Blue.c
 
-EXTRA_DIST = $(top_srcdir)/include/app/AppCommon.h \
-    $(top_srcdir)/include/app/ArgumentParser.h \
-    $(top_srcdir)/include/app/ImageReader.h \
-    $(top_srcdir)/include/app/ImageProcessor.h \
-    $(top_srcdir)/include/app/ImageWriter.h \
-    $(top_srcdir)/include/app/stbi/stb_image.h \
-    $(top_srcdir)/include/app/stbi/stb_image_write.h \
-    $(top_srcdir)/include/engine/EngineCommon.h
+EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
+    $(top_srcdir)/include/application/ArgumentParser.h \
+    $(top_srcdir)/include/application/ImageReader.h \
+    $(top_srcdir)/include/application/ImageProcessor.h \
+    $(top_srcdir)/include/application/ImageWriter.h \
+    $(top_srcdir)/include/application/stbi/stb_image.h \
+    $(top_srcdir)/include/application/stbi/stb_image_write.h \
+    $(top_srcdir)/include/engine/EngineCommon.h \
+    $(top_srcdir)/include/engine/FilterProcessor.h \
+    $(top_srcdir)/include/engine/Filters.h \
+    $(top_srcdir)/include/filters/None.h \
+    $(top_srcdir)/include/filters/Monochrome.h \
+    $(top_srcdir)/include/filters/Red.h \
+    $(top_srcdir)/include/filters/Green.h \
+    $(top_srcdir)/include/filters/Blue.h
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
-    -I$(top_srcdir)/include/app \
-    -I$(top_srcdir)/include/app/stbi \
-    -I$(top_srcdir)/include/engine
+    -I$(top_srcdir)/include/application \
+    -I$(top_srcdir)/include/application/stbi \
+    -I$(top_srcdir)/include/engine \
+    -I$(top_srcdir)/include/filters
 
 cimgfil_LDADD = -lm
 all: config.h
@@ -416,36 +445,69 @@ $(top_builddir)/src/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/cimgfil-main.$(OBJEXT):  \
 	$(top_builddir)/src/$(am__dirstamp) \
 	$(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/$(am__dirstamp):
-	@$(MKDIR_P) $(top_builddir)/src/app
-	@: > $(top_builddir)/src/app/$(am__dirstamp)
-$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) $(top_builddir)/src/app/$(DEPDIR)
-	@: > $(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/cimgfil-ArgumentParser.$(OBJEXT):  \
-	$(top_builddir)/src/app/$(am__dirstamp) \
-	$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/cimgfil-ImageReader.$(OBJEXT):  \
-	$(top_builddir)/src/app/$(am__dirstamp) \
-	$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/cimgfil-ImageProcessor.$(OBJEXT):  \
-	$(top_builddir)/src/app/$(am__dirstamp) \
-	$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/cimgfil-ImageWriter.$(OBJEXT):  \
-	$(top_builddir)/src/app/$(am__dirstamp) \
-	$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/stbi/$(am__dirstamp):
-	@$(MKDIR_P) $(top_builddir)/src/app/stbi
-	@: > $(top_builddir)/src/app/stbi/$(am__dirstamp)
-$(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) $(top_builddir)/src/app/stbi/$(DEPDIR)
-	@: > $(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/stbi/cimgfil-stb_image.$(OBJEXT):  \
-	$(top_builddir)/src/app/stbi/$(am__dirstamp) \
-	$(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.$(OBJEXT):  \
-	$(top_builddir)/src/app/stbi/$(am__dirstamp) \
-	$(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/application
+	@: > $(top_builddir)/src/application/$(am__dirstamp)
+$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/application/$(DEPDIR)
+	@: > $(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/cimgfil-ArgumentParser.$(OBJEXT):  \
+	$(top_builddir)/src/application/$(am__dirstamp) \
+	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/cimgfil-ImageReader.$(OBJEXT):  \
+	$(top_builddir)/src/application/$(am__dirstamp) \
+	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/cimgfil-ImageProcessor.$(OBJEXT):  \
+	$(top_builddir)/src/application/$(am__dirstamp) \
+	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/cimgfil-ImageWriter.$(OBJEXT):  \
+	$(top_builddir)/src/application/$(am__dirstamp) \
+	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/stbi/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/application/stbi
+	@: > $(top_builddir)/src/application/stbi/$(am__dirstamp)
+$(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/application/stbi/$(DEPDIR)
+	@: > $(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/stbi/cimgfil-stb_image.$(OBJEXT):  \
+	$(top_builddir)/src/application/stbi/$(am__dirstamp) \
+	$(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.$(OBJEXT):  \
+	$(top_builddir)/src/application/stbi/$(am__dirstamp) \
+	$(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/engine/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/engine
+	@: > $(top_builddir)/src/engine/$(am__dirstamp)
+$(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/engine/$(DEPDIR)
+	@: > $(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/engine/cimgfil-FilterProcessor.$(OBJEXT):  \
+	$(top_builddir)/src/engine/$(am__dirstamp) \
+	$(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/engine/cimgfil-Filters.$(OBJEXT):  \
+	$(top_builddir)/src/engine/$(am__dirstamp) \
+	$(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters
+	@: > $(top_builddir)/src/filters/$(am__dirstamp)
+$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/$(DEPDIR)
+	@: > $(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-None.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Red.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Green.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/cimgfil-Blue.$(OBJEXT):  \
+	$(top_builddir)/src/filters/$(am__dirstamp) \
+	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
 
 cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEPENDENCIES) 
 	@rm -f cimgfil$(EXEEXT)
@@ -454,19 +516,28 @@ cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEP
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 	-rm -f $(top_builddir)/src/*.$(OBJEXT)
-	-rm -f $(top_builddir)/src/app/*.$(OBJEXT)
-	-rm -f $(top_builddir)/src/app/stbi/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/application/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/application/stbi/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/engine/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/filters/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -504,89 +575,187 @@ $(top_builddir)/src/cimgfil-main.obj: $(top_builddir)/src/main.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/cimgfil-main.obj `if test -f '$(top_builddir)/src/main.c'; then $(CYGPATH_W) '$(top_builddir)/src/main.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/main.c'; fi`
 
-$(top_builddir)/src/app/cimgfil-ArgumentParser.o: $(top_builddir)/src/app/ArgumentParser.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ArgumentParser.o -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/app/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ArgumentParser.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ArgumentParser.c' object='$(top_builddir)/src/app/cimgfil-ArgumentParser.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ArgumentParser.o: $(top_builddir)/src/application/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ArgumentParser.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/application/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/application/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ArgumentParser.c' object='$(top_builddir)/src/application/cimgfil-ArgumentParser.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/app/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ArgumentParser.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ArgumentParser.o `test -f '$(top_builddir)/src/application/ArgumentParser.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ArgumentParser.c
 
-$(top_builddir)/src/app/cimgfil-ArgumentParser.obj: $(top_builddir)/src/app/ArgumentParser.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ArgumentParser.obj -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/app/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ArgumentParser.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ArgumentParser.c' object='$(top_builddir)/src/app/cimgfil-ArgumentParser.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ArgumentParser.obj: $(top_builddir)/src/application/ArgumentParser.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ArgumentParser.obj -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Tpo -c -o $(top_builddir)/src/application/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/application/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ArgumentParser.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ArgumentParser.c' object='$(top_builddir)/src/application/cimgfil-ArgumentParser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/app/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ArgumentParser.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/application/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ArgumentParser.c'; fi`
 
-$(top_builddir)/src/app/cimgfil-ImageReader.o: $(top_builddir)/src/app/ImageReader.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageReader.o -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageReader.o `test -f '$(top_builddir)/src/app/ImageReader.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageReader.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageReader.c' object='$(top_builddir)/src/app/cimgfil-ImageReader.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageReader.o: $(top_builddir)/src/application/ImageReader.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageReader.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageReader.o `test -f '$(top_builddir)/src/application/ImageReader.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageReader.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageReader.c' object='$(top_builddir)/src/application/cimgfil-ImageReader.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageReader.o `test -f '$(top_builddir)/src/app/ImageReader.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageReader.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageReader.o `test -f '$(top_builddir)/src/application/ImageReader.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageReader.c
 
-$(top_builddir)/src/app/cimgfil-ImageReader.obj: $(top_builddir)/src/app/ImageReader.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageReader.obj -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageReader.obj `if test -f '$(top_builddir)/src/app/ImageReader.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageReader.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageReader.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageReader.c' object='$(top_builddir)/src/app/cimgfil-ImageReader.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageReader.obj: $(top_builddir)/src/application/ImageReader.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageReader.obj -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageReader.obj `if test -f '$(top_builddir)/src/application/ImageReader.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageReader.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageReader.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageReader.c' object='$(top_builddir)/src/application/cimgfil-ImageReader.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageReader.obj `if test -f '$(top_builddir)/src/app/ImageReader.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageReader.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageReader.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageReader.obj `if test -f '$(top_builddir)/src/application/ImageReader.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageReader.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageReader.c'; fi`
 
-$(top_builddir)/src/app/cimgfil-ImageProcessor.o: $(top_builddir)/src/app/ImageProcessor.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageProcessor.o -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageProcessor.o `test -f '$(top_builddir)/src/app/ImageProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageProcessor.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageProcessor.c' object='$(top_builddir)/src/app/cimgfil-ImageProcessor.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageProcessor.o: $(top_builddir)/src/application/ImageProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageProcessor.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageProcessor.o `test -f '$(top_builddir)/src/application/ImageProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageProcessor.c' object='$(top_builddir)/src/application/cimgfil-ImageProcessor.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageProcessor.o `test -f '$(top_builddir)/src/app/ImageProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageProcessor.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageProcessor.o `test -f '$(top_builddir)/src/application/ImageProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageProcessor.c
 
-$(top_builddir)/src/app/cimgfil-ImageProcessor.obj: $(top_builddir)/src/app/ImageProcessor.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageProcessor.obj -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageProcessor.obj `if test -f '$(top_builddir)/src/app/ImageProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageProcessor.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageProcessor.c' object='$(top_builddir)/src/app/cimgfil-ImageProcessor.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageProcessor.obj: $(top_builddir)/src/application/ImageProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageProcessor.obj -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageProcessor.obj `if test -f '$(top_builddir)/src/application/ImageProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageProcessor.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageProcessor.c' object='$(top_builddir)/src/application/cimgfil-ImageProcessor.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageProcessor.obj `if test -f '$(top_builddir)/src/app/ImageProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageProcessor.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageProcessor.obj `if test -f '$(top_builddir)/src/application/ImageProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageProcessor.c'; fi`
 
-$(top_builddir)/src/app/cimgfil-ImageWriter.o: $(top_builddir)/src/app/ImageWriter.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageWriter.o -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageWriter.o `test -f '$(top_builddir)/src/app/ImageWriter.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageWriter.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageWriter.c' object='$(top_builddir)/src/app/cimgfil-ImageWriter.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageWriter.o: $(top_builddir)/src/application/ImageWriter.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageWriter.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageWriter.o `test -f '$(top_builddir)/src/application/ImageWriter.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageWriter.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageWriter.c' object='$(top_builddir)/src/application/cimgfil-ImageWriter.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageWriter.o `test -f '$(top_builddir)/src/app/ImageWriter.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/ImageWriter.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageWriter.o `test -f '$(top_builddir)/src/application/ImageWriter.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageWriter.c
 
-$(top_builddir)/src/app/cimgfil-ImageWriter.obj: $(top_builddir)/src/app/ImageWriter.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/cimgfil-ImageWriter.obj -MD -MP -MF $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Tpo -c -o $(top_builddir)/src/app/cimgfil-ImageWriter.obj `if test -f '$(top_builddir)/src/app/ImageWriter.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageWriter.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageWriter.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Tpo $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/ImageWriter.c' object='$(top_builddir)/src/app/cimgfil-ImageWriter.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/cimgfil-ImageWriter.obj: $(top_builddir)/src/application/ImageWriter.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageWriter.obj -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageWriter.obj `if test -f '$(top_builddir)/src/application/ImageWriter.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageWriter.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageWriter.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageWriter.c' object='$(top_builddir)/src/application/cimgfil-ImageWriter.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/cimgfil-ImageWriter.obj `if test -f '$(top_builddir)/src/app/ImageWriter.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/ImageWriter.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/ImageWriter.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageWriter.obj `if test -f '$(top_builddir)/src/application/ImageWriter.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageWriter.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageWriter.c'; fi`
 
-$(top_builddir)/src/app/stbi/cimgfil-stb_image.o: $(top_builddir)/src/app/stbi/stb_image.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/stbi/cimgfil-stb_image.o -MD -MP -MF $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image.o `test -f '$(top_builddir)/src/app/stbi/stb_image.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/stbi/stb_image.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/stbi/stb_image.c' object='$(top_builddir)/src/app/stbi/cimgfil-stb_image.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/stbi/cimgfil-stb_image.o: $(top_builddir)/src/application/stbi/stb_image.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/stbi/cimgfil-stb_image.o -MD -MP -MF $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image.o `test -f '$(top_builddir)/src/application/stbi/stb_image.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/stbi/stb_image.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/stbi/stb_image.c' object='$(top_builddir)/src/application/stbi/cimgfil-stb_image.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image.o `test -f '$(top_builddir)/src/app/stbi/stb_image.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/stbi/stb_image.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image.o `test -f '$(top_builddir)/src/application/stbi/stb_image.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/stbi/stb_image.c
 
-$(top_builddir)/src/app/stbi/cimgfil-stb_image.obj: $(top_builddir)/src/app/stbi/stb_image.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/stbi/cimgfil-stb_image.obj -MD -MP -MF $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image.obj `if test -f '$(top_builddir)/src/app/stbi/stb_image.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/stbi/stb_image.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/stbi/stb_image.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/stbi/stb_image.c' object='$(top_builddir)/src/app/stbi/cimgfil-stb_image.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/stbi/cimgfil-stb_image.obj: $(top_builddir)/src/application/stbi/stb_image.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/stbi/cimgfil-stb_image.obj -MD -MP -MF $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image.obj `if test -f '$(top_builddir)/src/application/stbi/stb_image.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/stbi/stb_image.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/stbi/stb_image.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Tpo $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/stbi/stb_image.c' object='$(top_builddir)/src/application/stbi/cimgfil-stb_image.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image.obj `if test -f '$(top_builddir)/src/app/stbi/stb_image.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/stbi/stb_image.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/stbi/stb_image.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image.obj `if test -f '$(top_builddir)/src/application/stbi/stb_image.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/stbi/stb_image.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/stbi/stb_image.c'; fi`
 
-$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.o: $(top_builddir)/src/app/stbi/stb_image_write.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.o -MD -MP -MF $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.o `test -f '$(top_builddir)/src/app/stbi/stb_image_write.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/stbi/stb_image_write.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/stbi/stb_image_write.c' object='$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.o: $(top_builddir)/src/application/stbi/stb_image_write.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.o -MD -MP -MF $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.o `test -f '$(top_builddir)/src/application/stbi/stb_image_write.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/stbi/stb_image_write.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/stbi/stb_image_write.c' object='$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.o `test -f '$(top_builddir)/src/app/stbi/stb_image_write.c' || echo '$(srcdir)/'`$(top_builddir)/src/app/stbi/stb_image_write.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.o `test -f '$(top_builddir)/src/application/stbi/stb_image_write.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/stbi/stb_image_write.c
 
-$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.obj: $(top_builddir)/src/app/stbi/stb_image_write.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.obj -MD -MP -MF $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.obj `if test -f '$(top_builddir)/src/app/stbi/stb_image_write.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/stbi/stb_image_write.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/stbi/stb_image_write.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/app/stbi/stb_image_write.c' object='$(top_builddir)/src/app/stbi/cimgfil-stb_image_write.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.obj: $(top_builddir)/src/application/stbi/stb_image_write.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.obj -MD -MP -MF $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.obj `if test -f '$(top_builddir)/src/application/stbi/stb_image_write.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/stbi/stb_image_write.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/stbi/stb_image_write.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Tpo $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/stbi/stb_image_write.c' object='$(top_builddir)/src/application/stbi/cimgfil-stb_image_write.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/app/stbi/cimgfil-stb_image_write.obj `if test -f '$(top_builddir)/src/app/stbi/stb_image_write.c'; then $(CYGPATH_W) '$(top_builddir)/src/app/stbi/stb_image_write.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/app/stbi/stb_image_write.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/stbi/cimgfil-stb_image_write.obj `if test -f '$(top_builddir)/src/application/stbi/stb_image_write.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/stbi/stb_image_write.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/stbi/stb_image_write.c'; fi`
+
+$(top_builddir)/src/engine/cimgfil-FilterProcessor.o: $(top_builddir)/src/engine/FilterProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/engine/cimgfil-FilterProcessor.o -MD -MP -MF $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Tpo -c -o $(top_builddir)/src/engine/cimgfil-FilterProcessor.o `test -f '$(top_builddir)/src/engine/FilterProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/engine/FilterProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Tpo $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/engine/FilterProcessor.c' object='$(top_builddir)/src/engine/cimgfil-FilterProcessor.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/engine/cimgfil-FilterProcessor.o `test -f '$(top_builddir)/src/engine/FilterProcessor.c' || echo '$(srcdir)/'`$(top_builddir)/src/engine/FilterProcessor.c
+
+$(top_builddir)/src/engine/cimgfil-FilterProcessor.obj: $(top_builddir)/src/engine/FilterProcessor.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/engine/cimgfil-FilterProcessor.obj -MD -MP -MF $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Tpo -c -o $(top_builddir)/src/engine/cimgfil-FilterProcessor.obj `if test -f '$(top_builddir)/src/engine/FilterProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/engine/FilterProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/engine/FilterProcessor.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Tpo $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/engine/FilterProcessor.c' object='$(top_builddir)/src/engine/cimgfil-FilterProcessor.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/engine/cimgfil-FilterProcessor.obj `if test -f '$(top_builddir)/src/engine/FilterProcessor.c'; then $(CYGPATH_W) '$(top_builddir)/src/engine/FilterProcessor.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/engine/FilterProcessor.c'; fi`
+
+$(top_builddir)/src/engine/cimgfil-Filters.o: $(top_builddir)/src/engine/Filters.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/engine/cimgfil-Filters.o -MD -MP -MF $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Tpo -c -o $(top_builddir)/src/engine/cimgfil-Filters.o `test -f '$(top_builddir)/src/engine/Filters.c' || echo '$(srcdir)/'`$(top_builddir)/src/engine/Filters.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Tpo $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/engine/Filters.c' object='$(top_builddir)/src/engine/cimgfil-Filters.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/engine/cimgfil-Filters.o `test -f '$(top_builddir)/src/engine/Filters.c' || echo '$(srcdir)/'`$(top_builddir)/src/engine/Filters.c
+
+$(top_builddir)/src/engine/cimgfil-Filters.obj: $(top_builddir)/src/engine/Filters.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/engine/cimgfil-Filters.obj -MD -MP -MF $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Tpo -c -o $(top_builddir)/src/engine/cimgfil-Filters.obj `if test -f '$(top_builddir)/src/engine/Filters.c'; then $(CYGPATH_W) '$(top_builddir)/src/engine/Filters.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/engine/Filters.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Tpo $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/engine/Filters.c' object='$(top_builddir)/src/engine/cimgfil-Filters.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/engine/cimgfil-Filters.obj `if test -f '$(top_builddir)/src/engine/Filters.c'; then $(CYGPATH_W) '$(top_builddir)/src/engine/Filters.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/engine/Filters.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-None.o: $(top_builddir)/src/filters/None.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-None.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Tpo -c -o $(top_builddir)/src/filters/cimgfil-None.o `test -f '$(top_builddir)/src/filters/None.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/None.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/None.c' object='$(top_builddir)/src/filters/cimgfil-None.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-None.o `test -f '$(top_builddir)/src/filters/None.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/None.c
+
+$(top_builddir)/src/filters/cimgfil-None.obj: $(top_builddir)/src/filters/None.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-None.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Tpo -c -o $(top_builddir)/src/filters/cimgfil-None.obj `if test -f '$(top_builddir)/src/filters/None.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/None.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/None.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/None.c' object='$(top_builddir)/src/filters/cimgfil-None.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-None.obj `if test -f '$(top_builddir)/src/filters/None.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/None.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/None.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Monochrome.o: $(top_builddir)/src/filters/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Monochrome.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Monochrome.c' object='$(top_builddir)/src/filters/cimgfil-Monochrome.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Monochrome.c
+
+$(top_builddir)/src/filters/cimgfil-Monochrome.obj: $(top_builddir)/src/filters/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Monochrome.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Monochrome.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Monochrome.c' object='$(top_builddir)/src/filters/cimgfil-Monochrome.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Monochrome.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Red.o: $(top_builddir)/src/filters/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Red.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Red.c' object='$(top_builddir)/src/filters/cimgfil-Red.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Red.c
+
+$(top_builddir)/src/filters/cimgfil-Red.obj: $(top_builddir)/src/filters/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Red.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Red.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Red.c' object='$(top_builddir)/src/filters/cimgfil-Red.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Red.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Green.o: $(top_builddir)/src/filters/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Green.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Green.c' object='$(top_builddir)/src/filters/cimgfil-Green.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Green.c
+
+$(top_builddir)/src/filters/cimgfil-Green.obj: $(top_builddir)/src/filters/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Green.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Green.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Green.c' object='$(top_builddir)/src/filters/cimgfil-Green.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Green.c'; fi`
+
+$(top_builddir)/src/filters/cimgfil-Blue.o: $(top_builddir)/src/filters/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Blue.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Blue.c' object='$(top_builddir)/src/filters/cimgfil-Blue.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Blue.c
+
+$(top_builddir)/src/filters/cimgfil-Blue.obj: $(top_builddir)/src/filters/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Blue.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Blue.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Blue.c' object='$(top_builddir)/src/filters/cimgfil-Blue.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Blue.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -848,10 +1017,14 @@ distclean-generic:
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
 	-test -z "$(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/$(DEPDIR)/$(am__dirstamp)
 	-test -z "$(top_builddir)/src/$(am__dirstamp)" || rm -f $(top_builddir)/src/$(am__dirstamp)
-	-test -z "$(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/$(DEPDIR)/$(am__dirstamp)
-	-test -z "$(top_builddir)/src/app/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/$(am__dirstamp)
-	-test -z "$(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/stbi/$(DEPDIR)/$(am__dirstamp)
-	-test -z "$(top_builddir)/src/app/stbi/$(am__dirstamp)" || rm -f $(top_builddir)/src/app/stbi/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/application/$(am__dirstamp)" || rm -f $(top_builddir)/src/application/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/application/stbi/$(am__dirstamp)" || rm -f $(top_builddir)/src/application/stbi/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/engine/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/engine/$(am__dirstamp)" || rm -f $(top_builddir)/src/engine/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -863,12 +1036,19 @@ clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 		-rm -f $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po
-	-rm -f $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po
-	-rm -f $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
+	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
+	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
+	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -917,12 +1097,19 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
 	-rm -rf $(top_srcdir)/autom4te.cache
 		-rm -f $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ArgumentParser.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageProcessor.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageReader.Po
-	-rm -f $(top_builddir)/src/app/$(DEPDIR)/cimgfil-ImageWriter.Po
-	-rm -f $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image.Po
-	-rm -f $(top_builddir)/src/app/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
+	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
+	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
+	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
+	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
+	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -1,18 +1,18 @@
-#ifndef APP_COMMON_H
-#define APP_COMMON_H
+#ifndef APPLICATION_COMMON_H
+#define APPLICATION_COMMON_H
 
 #include <stddef.h>
 
 typedef struct {
     char *value;
     size_t length;
-} Arguments;
+} ApplicationArguments;
 
 typedef struct {
     char *inputImageFilename;
     char *outputImageFilename;
     int filterId;
-    Arguments arguments;
-} Configurations;
+    ApplicationArguments arguments;
+} ApplicationConfigurations;
 
 #endif

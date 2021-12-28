@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "argumentparser.h": "c",
-        "appcommon.h": "c"
+        "appcommon.h": "c",
+        "imagereader.h": "c",
+        "enginecommon.h": "c"
     }
 }
