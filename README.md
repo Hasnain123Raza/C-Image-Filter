@@ -62,6 +62,14 @@ The avaialable filters are as follows:
 
 13  FILTER_SATURATION
 
+14  FILTER_ROTATE_CLOCKWISE
+
+15  FILTER_ROTATE_COUNTERCLOCKWISE
+
+16  FILTER_FLIP_VERTICAL
+
+17  FILTER_FLIP_HORIZONTAL
+
 ### Filter Arguments
 
 > [arguments...]

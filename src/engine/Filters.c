@@ -48,6 +48,18 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_SATURATION:
             filter = &Saturation;
             break;
+        case FILTER_ROTATE_CLOCKWISE:
+            filter = &RotateClockwise;
+            break;
+        case FILTER_ROTATE_COUNTERCLOCKWISE:
+            filter = &RotateCounterClockwise;
+            break;
+        case FILTER_FLIP_VERTICAL:
+            filter = &FlipVertical;
+            break;
+        case FILTER_FLIP_HORIZONTAL:
+            filter = &FlipHorizontal;
+            break;
         default:
             break;
     }

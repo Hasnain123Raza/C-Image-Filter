@@ -22,7 +22,11 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/filters/Negative.c \
     $(top_srcdir)/src/filters/Grayscale.c \
     $(top_srcdir)/src/filters/Brightness.c \
-    $(top_srcdir)/src/filters/Saturation.c
+    $(top_srcdir)/src/filters/Saturation.c \
+    $(top_srcdir)/src/filters/RotateClockwise.c \
+    $(top_srcdir)/src/filters/RotateCounterClockwise.c \
+    $(top_srcdir)/src/filters/FlipVertical.c \
+    $(top_srcdir)/src/filters/FlipHorizontal.c
 
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
@@ -48,7 +52,11 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/filters/Negative.h \
     $(top_srcdir)/include/filters/Grayscale.h \
     $(top_srcdir)/include/filters/Brightness.h \
-    $(top_srcdir)/include/filters/Saturation.h
+    $(top_srcdir)/include/filters/Saturation.h \
+    $(top_srcdir)/include/filters/RotateClockwise.h \
+    $(top_srcdir)/include/filters/RotateCounterClockwise.h \
+    $(top_srcdir)/include/filters/FlipVertical.h \
+    $(top_srcdir)/include/filters/FlipHorizontal.h
 
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \

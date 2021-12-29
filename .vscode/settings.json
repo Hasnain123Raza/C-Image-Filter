@@ -4,6 +4,9 @@
         "appcommon.h": "c",
         "imagereader.h": "c",
         "enginecommon.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "rotatecounterclockwise.h": "c",
+        "flipvertical.h": "c",
+        "fliphorizontal.h": "c"
     }
 }

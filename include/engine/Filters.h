@@ -17,6 +17,10 @@
 #include "Grayscale.h"
 #include "Brightness.h"
 #include "Saturation.h"
+#include "RotateClockwise.h"
+#include "RotateCounterClockwise.h"
+#include "FlipVertical.h"
+#include "FlipHorizontal.h"
 
 Filter *getFilterFromFilterId(FilterID filterId);
 
