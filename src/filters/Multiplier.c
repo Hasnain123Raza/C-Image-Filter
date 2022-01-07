@@ -5,7 +5,7 @@ typedef struct {
 } MultiplierUserData;
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations);
-static int Function(Chunk *chunk, void *userData);
+static int Function(FilterFunctionArguments *arguments);
 static void FreeUserData(void *userData);
 
 Filter Multiplier = {
@@ -65,8 +65,11 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     return 0;
 }
 
-static int Function(Chunk *chunk, void *userData)
+static int Function(FilterFunctionArguments *arguments)
 {
+    Chunk *chunk = arguments->chunk;
+    void *userData = arguments->userData;
+
     MultiplierUserData *multiplierUserData = (MultiplierUserData *)userData;
     float *multipliers = multiplierUserData->multipliers;
     

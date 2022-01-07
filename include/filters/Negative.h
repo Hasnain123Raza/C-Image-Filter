@@ -3,6 +3,7 @@
 
 #include <argz.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "EngineCommon.h"
 

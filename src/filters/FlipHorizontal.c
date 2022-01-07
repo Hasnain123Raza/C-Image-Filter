@@ -1,7 +1,7 @@
 #include "FlipHorizontal.h"
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations);
-static int Function(Chunk *chunk, void *userData);
+static int Function(FilterFunctionArguments *arguments);
 
 Filter FlipHorizontal = {
     .filterId = FILTER_FLIP_HORIZONTAL,
@@ -14,8 +14,11 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     return 0;
 }
 
-static int Function(Chunk *chunk, void *userData)
+static int Function(FilterFunctionArguments *arguments)
 {
+    Chunk *chunk = arguments->chunk;
+    void *userData = arguments->userData;
+
     unsigned char *sourceData = chunk->sourceImageData->data;
     unsigned char *targetData = chunk->targetImageData->data;
 

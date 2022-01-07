@@ -1,7 +1,7 @@
 #include "Monochrome.h"
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations);
-static int Function(Chunk *chunk, void *userData);
+static int Function(FilterFunctionArguments *arguments);
 static void FreeUserData(void *userData);
 
 Filter Monochrome = {
@@ -43,6 +43,8 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
         free(prefilters);
         return 1;
     }
+    memset(multiplierFilterRequest, 0, sizeof(FilterRequest));
+
     prefilters[0] = multiplierFilterRequest;
     multiplierFilterRequest->filterId = FILTER_MULTIPLIER;
 
@@ -78,7 +80,7 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     return 0;
 }
 
-static int Function(Chunk *chunk, void *userData)
+static int Function(FilterFunctionArguments *arguments)
 {
     return 0;
 }

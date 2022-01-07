@@ -1,7 +1,7 @@
 #include "Blue.h"
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations);
-static int Function(Chunk *chunk, void *userData);
+static int Function(FilterFunctionArguments *arguments);
 
 Filter Blue = {
     .filterId = FILTER_BLUE,
@@ -24,6 +24,8 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
         free(prefilters);
         return 1;
     }
+    memset(monochromeFilterRequest, 0, sizeof(FilterRequest));
+
     prefilters[0] = monochromeFilterRequest;
     monochromeFilterRequest->filterId = FILTER_MONOCHROME;
 
@@ -53,7 +55,7 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     return 0;
 }
 
-static int Function(Chunk *chunk, void *userData)
+static int Function(FilterFunctionArguments *arguments)
 {
     return 0;
 }

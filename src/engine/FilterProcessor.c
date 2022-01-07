@@ -1,5 +1,7 @@
 #include "FilterProcessor.h"
 
+static int scheduleProcessing(FilterFunction filterFunction, ImageData *sourceImageData, ImageData *targetImageData, void *userData, FilterRequest *filterRequest);
+
 static FilterConfigurations *generateFilterConfigurations(FilterConfigurator filterConfigurator, FilterRequest *filterRequest, ImageData *sourceImageData);
 static void freeFilterConfigurations(FilterConfigurations *configurations, int ignoreImageData);
 
@@ -27,6 +29,10 @@ ImageData *applyFilter(FilterRequest *filterRequest, ImageData *sourceImageData)
         FilterRequest **prefilters = configurations->prefilters;
         while (*prefilters)
         {
+#if MULTITHREADING == 1
+            if ((*prefilters)->threads == 0)
+                (*prefilters)->threads = filterRequest->threads;
+#endif
             ImageData *temporaryImageData = applyFilter(*prefilters, prefilteredImageData);
             if (!temporaryImageData)
             {
@@ -56,14 +62,7 @@ ImageData *applyFilter(FilterRequest *filterRequest, ImageData *sourceImageData)
         return outputImageData;
     }
 
-    Chunk chunk = {
-        .sourceImageData = sourceImageData,
-        .targetImageData = targetImageData,
-        .startPixelIndex = 0,
-        .endPixelIndex = targetImageData->width * targetImageData->height,
-    };
-
-    if (filter->function(&chunk, configurations->userData) != 0)
+    if (scheduleProcessing(filter->function, sourceImageData, targetImageData, configurations->userData, filterRequest) != 0)
     {
         if (prefilteredImageData != sourceImageData)
         {
@@ -85,6 +84,10 @@ ImageData *applyFilter(FilterRequest *filterRequest, ImageData *sourceImageData)
         FilterRequest **postfilters = configurations->postfilters;
         while (*postfilters)
         {
+#if MULTITHREADING == 1
+            if ((*postfilters)->threads == 0)
+                (*postfilters)->threads = filterRequest->threads;
+#endif
             ImageData *temporaryImageData = applyFilter(*postfilters, targetImageData);
             if (!temporaryImageData)
             {
@@ -99,6 +102,95 @@ ImageData *applyFilter(FilterRequest *filterRequest, ImageData *sourceImageData)
 
     freeFilterConfigurations(configurations, 1);
     return targetImageData;
+}
+
+static int scheduleProcessing(FilterFunction filterFunction, ImageData *sourceImageData, ImageData *targetImageData, void *userData, FilterRequest *filterRequest)
+{
+#if MULTITHREADING == 0
+    Chunk chunk = {
+        .sourceImageData = sourceImageData,
+        .targetImageData = targetImageData,
+        .startPixelIndex = 0,
+        .endPixelIndex = targetImageData->width * targetImageData->height,
+    };
+
+    FilterFunctionArguments arguments = {
+        .chunk = &chunk,
+        .userData = userData,
+    };
+
+    return filterFunction(&arguments);
+#else
+    int imageSize = targetImageData->width * targetImageData->height;
+    int actualThreads = filterRequest->threads > imageSize ? imageSize : filterRequest->threads;
+    int threadSize = (imageSize + actualThreads - 1) / actualThreads;
+
+    pthread_t *threads = (pthread_t *)malloc(actualThreads * sizeof(pthread_t));
+    if (!threads)
+        return 1;
+    
+    Chunk *chunks = (Chunk *)malloc(actualThreads * sizeof(Chunk));
+    if (!chunks)
+    {
+        free(threads);
+        return 1;
+    }
+
+    FilterFunctionArguments *arguments = (FilterFunctionArguments *)malloc(actualThreads * sizeof(FilterFunctionArguments));
+    if (!arguments)
+    {
+        free(threads);
+        free(chunks);
+        return 1;
+    }
+
+    for (int index = 0; index < actualThreads; index++)
+    {
+        int startPixelIndex = index * threadSize;
+        int endPixelIndex = (index + 1) * threadSize;
+        if (endPixelIndex > imageSize)
+            endPixelIndex = imageSize;
+        if (index == actualThreads - 1)
+            endPixelIndex = imageSize;
+
+        chunks[index] = (Chunk) {
+            .sourceImageData = sourceImageData,
+            .targetImageData = targetImageData,
+            .startPixelIndex = startPixelIndex,
+            .endPixelIndex = endPixelIndex,
+        };
+
+        arguments[index] = (FilterFunctionArguments) {
+            .chunk = &chunks[index],
+            .userData = userData,
+        };
+
+        if (pthread_create(&threads[index], NULL, (void *(*)(void *))filterFunction, &arguments[index]) != 0)
+        {
+            for (int counter = 0; counter < index; counter++)
+                pthread_cancel(threads[counter]);
+            free(threads);
+            free(chunks);
+            return 1;
+        }
+
+        if (endPixelIndex == imageSize)
+        {
+            actualThreads = index + 1;
+            break;
+        }
+    }
+
+    int status = 0;
+
+    for (int index = 0; index < actualThreads; index++)
+        status = pthread_join(threads[index], NULL);
+
+    free(threads);
+    free(chunks);
+
+    return status;
+#endif
 }
 
 static FilterConfigurations *generateFilterConfigurations(FilterConfigurator filterConfigurator, FilterRequest *filterRequest, ImageData *sourceImageData)

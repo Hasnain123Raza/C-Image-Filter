@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/cimgfil",
             "args": [
-                "-f14"
+                "-f9"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",

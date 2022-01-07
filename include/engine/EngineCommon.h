@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+#include "config.h"
+
 typedef enum {
     FILTER_NONE,
     FILTER_MULTIPLIER,
@@ -40,6 +42,9 @@ typedef struct {
 typedef struct {
     FilterID filterId;
     EngineArguments *arguments;
+#if MULTITHREADING == 1
+    int threads;
+#endif
 } FilterRequest;
 
 typedef struct {
@@ -59,7 +64,12 @@ typedef struct {
     int endPixelIndex;
 } Chunk;
 
-typedef int (*FilterFunction)(Chunk *chunk, void *userData);
+typedef struct {
+    Chunk *chunk;
+    void *userData;
+} FilterFunctionArguments;
+
+typedef int (*FilterFunction)(FilterFunctionArguments *arguments);
 
 typedef struct Filter {
     FilterID filterId;

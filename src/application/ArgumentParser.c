@@ -11,6 +11,9 @@ int parseArguments(int argc, char *argv[], ApplicationConfigurations *configurat
         { "input", 'i', "FILENAME", OPTION_ARG_OPTIONAL, "Filename of input. Defaults to " DEFAULT_INPUT_FILENAME},
         { "output", 'o', "FILENAME", OPTION_ARG_OPTIONAL, "Filename of output. Defaults to " DEFAULT_OUTPUT_FILENAME},
         { "filter", 'f', "FILTERID", OPTION_ARG_OPTIONAL, "ID of filter to use. Defaults to " DEFAULT_FILTER_ID},
+#if MULTITHREADING == 1
+        { "threads", 't', "NUMBER", OPTION_ARG_OPTIONAL, "Number of threads to use. Defaults to " DEFAULT_THREADS},
+#endif
         { 0 }
     };
 
@@ -21,6 +24,9 @@ int parseArguments(int argc, char *argv[], ApplicationConfigurations *configurat
     configurations->inputImageFilename = DEFAULT_INPUT_FILENAME;
     configurations->outputImageFilename = DEFAULT_OUTPUT_FILENAME;
     configurations->filterId = atoi(DEFAULT_FILTER_ID);
+#if MULTITHREADING == 1
+    configurations->threads = atoi(DEFAULT_THREADS);
+#endif
     configurations->arguments.value = 0;
     configurations->arguments.length = 0;
 
@@ -41,6 +47,11 @@ static int parse_opt(int key, char *arg, struct argp_state *state)
         case 'f':
             configurations->filterId = atoi(arg);
             break;
+#if MULTITHREADING == 1
+        case 't':
+            configurations->threads = atoi(arg);
+            break;
+#endif
         case ARGP_KEY_ARG:
             argz_add(&configurations->arguments.value, &configurations->arguments.length, arg);
             break;
