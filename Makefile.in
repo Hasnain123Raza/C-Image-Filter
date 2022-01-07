@@ -105,6 +105,7 @@ PROGRAMS = $(bin_PROGRAMS)
 am__dirstamp = $(am__leading_dot)dirstamp
 am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
 	$(top_builddir)/src/application/cimgfil-ArgumentParser.$(OBJEXT) \
+	$(top_builddir)/src/application/cimgfil-ImageType.$(OBJEXT) \
 	$(top_builddir)/src/application/cimgfil-ImageReader.$(OBJEXT) \
 	$(top_builddir)/src/application/cimgfil-ImageProcessor.$(OBJEXT) \
 	$(top_builddir)/src/application/cimgfil-ImageWriter.$(OBJEXT) \
@@ -151,6 +152,7 @@ am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
 	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po \
 	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po \
 	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po \
+	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po \
 	$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po \
 	$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po \
 	$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po \
@@ -334,6 +336,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/application/ArgumentParser.c \
+    $(top_srcdir)/src/application/ImageType.c \
     $(top_srcdir)/src/application/ImageReader.c \
     $(top_srcdir)/src/application/ImageProcessor.c \
     $(top_srcdir)/src/application/ImageWriter.c \
@@ -362,6 +365,7 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/application/ArgumentParser.h \
+    $(top_srcdir)/include/application/ImageType.h \
     $(top_srcdir)/include/application/ImageReader.h \
     $(top_srcdir)/include/application/ImageProcessor.h \
     $(top_srcdir)/include/application/ImageWriter.h \
@@ -509,6 +513,9 @@ $(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/application/cimgfil-ArgumentParser.$(OBJEXT):  \
 	$(top_builddir)/src/application/$(am__dirstamp) \
 	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/application/cimgfil-ImageType.$(OBJEXT):  \
+	$(top_builddir)/src/application/$(am__dirstamp) \
+	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
 $(top_builddir)/src/application/cimgfil-ImageReader.$(OBJEXT):  \
 	$(top_builddir)/src/application/$(am__dirstamp) \
 	$(top_builddir)/src/application/$(DEPDIR)/$(am__dirstamp)
@@ -622,6 +629,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po@am__quote@ # am--include-marker
@@ -695,6 +703,20 @@ $(top_builddir)/src/application/cimgfil-ArgumentParser.obj: $(top_builddir)/src/
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ArgumentParser.c' object='$(top_builddir)/src/application/cimgfil-ArgumentParser.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ArgumentParser.obj `if test -f '$(top_builddir)/src/application/ArgumentParser.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ArgumentParser.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ArgumentParser.c'; fi`
+
+$(top_builddir)/src/application/cimgfil-ImageType.o: $(top_builddir)/src/application/ImageType.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageType.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageType.o `test -f '$(top_builddir)/src/application/ImageType.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageType.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageType.c' object='$(top_builddir)/src/application/cimgfil-ImageType.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageType.o `test -f '$(top_builddir)/src/application/ImageType.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageType.c
+
+$(top_builddir)/src/application/cimgfil-ImageType.obj: $(top_builddir)/src/application/ImageType.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageType.obj -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageType.obj `if test -f '$(top_builddir)/src/application/ImageType.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageType.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageType.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Tpo $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/application/ImageType.c' object='$(top_builddir)/src/application/cimgfil-ImageType.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/application/cimgfil-ImageType.obj `if test -f '$(top_builddir)/src/application/ImageType.c'; then $(CYGPATH_W) '$(top_builddir)/src/application/ImageType.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/application/ImageType.c'; fi`
 
 $(top_builddir)/src/application/cimgfil-ImageReader.o: $(top_builddir)/src/application/ImageReader.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/application/cimgfil-ImageReader.o -MD -MP -MF $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Tpo -c -o $(top_builddir)/src/application/cimgfil-ImageReader.o `test -f '$(top_builddir)/src/application/ImageReader.c' || echo '$(srcdir)/'`$(top_builddir)/src/application/ImageReader.c
@@ -1328,6 +1350,7 @@ distclean: distclean-am
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
@@ -1402,6 +1425,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ArgumentParser.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageProcessor.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageReader.Po
+	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageType.Po
 	-rm -f $(top_builddir)/src/application/$(DEPDIR)/cimgfil-ImageWriter.Po
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image.Po
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po

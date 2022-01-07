@@ -4,6 +4,7 @@
 #include "ApplicationCommon.h"
 #include "ArgumentParser.h"
 #include "EngineCommon.h"
+#include "ImageType.h"
 
 #include "ImageReader.h"
 #include "ImageProcessor.h"
@@ -19,6 +20,15 @@ int main(int argc, char *argv[])
     int parse = parseArguments(argc, argv, &configurations);
 
     if (parse != 0)
+    {
+        freeApplicationConfigurations(&configurations);
+        return 1;
+    }
+
+    ImageType inputImageType = getImageTypeFromFilename(configurations.inputImageFilename);
+    ImageType outputImageType = getImageTypeFromFilename(configurations.outputImageFilename);
+
+    if (inputImageType == IMAGE_TYPE_UNKNOWN || outputImageType == IMAGE_TYPE_UNKNOWN)
     {
         freeApplicationConfigurations(&configurations);
         return 1;

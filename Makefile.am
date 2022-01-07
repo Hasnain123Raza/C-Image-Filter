@@ -2,6 +2,7 @@ bin_PROGRAMS = cimgfil
 
 cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/application/ArgumentParser.c \
+    $(top_srcdir)/src/application/ImageType.c \
     $(top_srcdir)/src/application/ImageReader.c \
     $(top_srcdir)/src/application/ImageProcessor.c \
     $(top_srcdir)/src/application/ImageWriter.c \
@@ -31,6 +32,7 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/application/ArgumentParser.h \
+    $(top_srcdir)/include/application/ImageType.h \
     $(top_srcdir)/include/application/ImageReader.h \
     $(top_srcdir)/include/application/ImageProcessor.h \
     $(top_srcdir)/include/application/ImageWriter.h \
