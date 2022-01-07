@@ -11,7 +11,10 @@ Filter Grayscale = {
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations)
 {
-    configurations->targetImageData->channels = 1;
+    if (sourceImageData->channels < 3)
+        return 1;
+    
+    configurations->targetImageData->channels = sourceImageData->channels == 3 ? 1 : 2;
 
     return 0;
 }
@@ -19,15 +22,19 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
 static int Function(FilterFunctionArguments *arguments)
 {
     Chunk *chunk = arguments->chunk;
-    void *userData = arguments->userData;
 
     unsigned char *sourceData = chunk->sourceImageData->data;
     unsigned char *targetData = chunk->targetImageData->data;
+    int channels = chunk->sourceImageData->channels;
 
     for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+        targetData[index] = (sourceData[index * channels + 0] + sourceData[index * channels + 1] + sourceData[index * channels + 2]) / 3;
+    
+
+    if (channels == 4)
     {
-        int pixelIndex = index;
-        targetData[pixelIndex] = (sourceData[pixelIndex * 3 + 0] + sourceData[pixelIndex * 3 + 1] + sourceData[pixelIndex * 3 + 2]) / 3;
+        for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+            targetData[index * channels + 3] = sourceData[index * channels + 3];
     }
 
     return 0;

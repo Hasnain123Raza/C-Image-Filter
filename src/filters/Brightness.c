@@ -36,33 +36,63 @@ static int Function(FilterFunctionArguments *arguments)
 
     unsigned char *sourceData = chunk->sourceImageData->data;
     unsigned char *targetData = chunk->targetImageData->data;
+    int channels = chunk->sourceImageData->channels;
 
     int brightness = ((BrightnessUserData *)userData)->brightness;
 
-    for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+    if (channels == 1 || channels == 2)
     {
-        int sourceRed = sourceData[index * 3 + 0] + 1 + brightness;
-        int sourceGreen = sourceData[index * 3 + 1] + 1 + brightness;
-        int sourceBlue = sourceData[index * 3 + 2] + 1 + brightness;
+        for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+        {
+            int sourceGray = sourceData[index * channels + 0] + brightness;
 
-        if (sourceRed > 255)
-            sourceRed = 255;
-        if (sourceRed < 0)
-            sourceRed = 0;
+            if (sourceGray > 255)
+                sourceGray = 255;
+            if (sourceGray < 0)
+                sourceGray = 0;
 
-        if (sourceGreen > 255)
-            sourceGreen = 255;
-        if (sourceGreen < 0)
-            sourceGreen = 0;
+            targetData[index * channels + 0] = (unsigned char)sourceGray;
+        }
 
-        if (sourceBlue > 255)
-            sourceBlue = 255;
-        if (sourceBlue < 0)
-            sourceBlue = 0;
+        if (channels == 2)
+        {
+            for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+                targetData[index * channels + 1] = sourceData[index * channels + 1];
+        }
+    }
+    else
+    {
+        for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+        {
+            int sourceRed = sourceData[index * channels + 0] + brightness;
+            int sourceGreen = sourceData[index * channels + 1] + brightness;
+            int sourceBlue = sourceData[index * channels + 2] + brightness;
 
-        targetData[index * 3 + 0] = (unsigned char)sourceRed;
-        targetData[index * 3 + 1] = (unsigned char)sourceGreen;
-        targetData[index * 3 + 2] = (unsigned char)sourceBlue;
+            if (sourceRed > 255)
+                sourceRed = 255;
+            if (sourceRed < 0)
+                sourceRed = 0;
+
+            if (sourceGreen > 255)
+                sourceGreen = 255;
+            if (sourceGreen < 0)
+                sourceGreen = 0;
+
+            if (sourceBlue > 255)
+                sourceBlue = 255;
+            if (sourceBlue < 0)
+                sourceBlue = 0;
+
+            targetData[index * channels + 0] = (unsigned char)sourceRed;
+            targetData[index * channels + 1] = (unsigned char)sourceGreen;
+            targetData[index * channels + 2] = (unsigned char)sourceBlue;
+        }
+
+        if (channels == 4)
+        {
+            for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+                targetData[index * channels + 3] = sourceData[index * channels + 3];
+        }
     }
 
     return 0;

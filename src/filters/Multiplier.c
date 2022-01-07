@@ -16,6 +16,9 @@ Filter Multiplier = {
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations)
 {
+    if (sourceImageData->channels < 3)
+        return 1;
+
     MultiplierUserData *userData = (MultiplierUserData *)malloc(sizeof(MultiplierUserData));
     if (!userData)
         return 1;
@@ -75,12 +78,13 @@ static int Function(FilterFunctionArguments *arguments)
     
     unsigned char *sourceData = chunk->sourceImageData->data;
     unsigned char *targetData = chunk->targetImageData->data;
+    int channels = chunk->sourceImageData->channels;
 
     for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
     {
-        unsigned char sourceRed = sourceData[index * 3 + 0] + 1;
-        unsigned char sourceGreen = sourceData[index * 3 + 1] + 1;
-        unsigned char sourceBlue = sourceData[index * 3 + 2] + 1;
+        unsigned char sourceRed = sourceData[index * channels + 0] + 1;
+        unsigned char sourceGreen = sourceData[index * channels + 1] + 1;
+        unsigned char sourceBlue = sourceData[index * channels + 2] + 1;
 
         float targetRed = sourceRed * multipliers[0] + sourceGreen * multipliers[1] + sourceBlue * multipliers[2];
         float targetGreen = sourceRed * multipliers[3] + sourceGreen * multipliers[4] + sourceBlue * multipliers[5];
@@ -104,6 +108,12 @@ static int Function(FilterFunctionArguments *arguments)
         targetData[index * 3 + 0] = (unsigned char)targetRed;
         targetData[index * 3 + 1] = (unsigned char)targetGreen;
         targetData[index * 3 + 2] = (unsigned char)targetBlue;
+    }
+
+    if (channels == 4)
+    {
+        for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+            targetData[index * channels + 3] = sourceData[index * channels + 3];
     }
 
     return 0;

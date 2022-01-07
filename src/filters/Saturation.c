@@ -16,6 +16,9 @@ Filter Saturation = {
 
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations)
 {
+    if (sourceImageData->channels < 3)
+        return 1;
+
     SaturationUserData *userData = (SaturationUserData *)malloc(sizeof(SaturationUserData));
     if (!userData)
         return 1;
@@ -36,6 +39,7 @@ static int Function(FilterFunctionArguments *arguments)
 
     unsigned char *sourceData = chunk->sourceImageData->data;
     unsigned char *targetData = chunk->targetImageData->data;
+    int channels = chunk->sourceImageData->channels;
 
     float saturation = ((SaturationUserData *)userData)->saturation;
 
@@ -66,9 +70,15 @@ static int Function(FilterFunctionArguments *arguments)
         if (sourceBlue < 0)
             sourceBlue = 0;
 
-        targetData[index * 3 + 0] = (unsigned char)sourceRed;
-        targetData[index * 3 + 1] = (unsigned char)sourceGreen;
-        targetData[index * 3 + 2] = (unsigned char)sourceBlue;
+        targetData[index * channels + 0] = (unsigned char)sourceRed;
+        targetData[index * channels + 1] = (unsigned char)sourceGreen;
+        targetData[index * channels + 2] = (unsigned char)sourceBlue;
+    }
+
+    if (channels == 4)
+    {
+        for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
+            targetData[index * channels + 3] = sourceData[index * channels + 3];
     }
 
     return 0;
