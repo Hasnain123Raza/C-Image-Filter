@@ -10,8 +10,12 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/cimgfil",
             "args": [
-                "-f11",
-                "-ooutput.png"
+                "-f18",
+                "3",
+                "3",
+                "0.1", "0.1", "0.1",
+                "0.1", "0.1", "0.1",
+                "0.1", "0.1", "0.1",
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",

@@ -60,6 +60,9 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_FLIP_HORIZONTAL:
             filter = &FlipHorizontal;
             break;
+        case FILTER_CONVOLUTE:
+            filter = &Convolute;
+            break;
         default:
             break;
     }

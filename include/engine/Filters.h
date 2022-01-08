@@ -21,6 +21,7 @@
 #include "RotateCounterClockwise.h"
 #include "FlipVertical.h"
 #include "FlipHorizontal.h"
+#include "Convolute.h"
 
 Filter *getFilterFromFilterId(FilterID filterId);
 

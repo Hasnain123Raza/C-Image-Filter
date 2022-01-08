@@ -70,6 +70,8 @@ The avaialable filters are as follows:
 
 17  FILTER_FLIP_HORIZONTAL
 
+18  FILTER_CONVOLUTION
+
 ### Filter Arguments
 
 > [arguments...]

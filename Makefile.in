@@ -114,23 +114,24 @@ am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
 	$(top_builddir)/src/engine/cimgfil-FilterProcessor.$(OBJEXT) \
 	$(top_builddir)/src/engine/cimgfil-Filters.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-None.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Multiplier.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Red.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Green.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Blue.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Yellow.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Cyan.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Magenta.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Sepia.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-Negative.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Red.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Green.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Blue.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.$(OBJEXT) \
+	$(top_builddir)/src/filters/multiplication/cimgfil-Negative.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Grayscale.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Brightness.$(OBJEXT) \
 	$(top_builddir)/src/filters/cimgfil-Saturation.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-RotateClockwise.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-FlipVertical.$(OBJEXT) \
-	$(top_builddir)/src/filters/cimgfil-FlipHorizontal.$(OBJEXT)
+	$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.$(OBJEXT) \
+	$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.$(OBJEXT) \
+	$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.$(OBJEXT) \
+	$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.$(OBJEXT) \
+	$(top_builddir)/src/filters/convolution/cimgfil-Convolute.$(OBJEXT)
 cimgfil_OBJECTS = $(am_cimgfil_OBJECTS)
 cimgfil_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -158,24 +159,25 @@ am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
 	$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po \
 	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po \
 	$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po \
-	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po
 am__mv = mv -f
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -345,23 +347,24 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/engine/FilterProcessor.c \
     $(top_srcdir)/src/engine/Filters.c \
     $(top_srcdir)/src/filters/None.c \
-    $(top_srcdir)/src/filters/Multiplier.c \
-    $(top_srcdir)/src/filters/Monochrome.c \
-    $(top_srcdir)/src/filters/Red.c \
-    $(top_srcdir)/src/filters/Green.c \
-    $(top_srcdir)/src/filters/Blue.c \
-    $(top_srcdir)/src/filters/Yellow.c \
-    $(top_srcdir)/src/filters/Cyan.c \
-    $(top_srcdir)/src/filters/Magenta.c \
-    $(top_srcdir)/src/filters/Sepia.c \
-    $(top_srcdir)/src/filters/Negative.c \
+    $(top_srcdir)/src/filters/multiplication/Multiplier.c \
+    $(top_srcdir)/src/filters/multiplication/Monochrome.c \
+    $(top_srcdir)/src/filters/multiplication/Red.c \
+    $(top_srcdir)/src/filters/multiplication/Green.c \
+    $(top_srcdir)/src/filters/multiplication/Blue.c \
+    $(top_srcdir)/src/filters/multiplication/Yellow.c \
+    $(top_srcdir)/src/filters/multiplication/Cyan.c \
+    $(top_srcdir)/src/filters/multiplication/Magenta.c \
+    $(top_srcdir)/src/filters/multiplication/Sepia.c \
+    $(top_srcdir)/src/filters/multiplication/Negative.c \
     $(top_srcdir)/src/filters/Grayscale.c \
     $(top_srcdir)/src/filters/Brightness.c \
     $(top_srcdir)/src/filters/Saturation.c \
-    $(top_srcdir)/src/filters/RotateClockwise.c \
-    $(top_srcdir)/src/filters/RotateCounterClockwise.c \
-    $(top_srcdir)/src/filters/FlipVertical.c \
-    $(top_srcdir)/src/filters/FlipHorizontal.c
+    $(top_srcdir)/src/filters/edition/RotateClockwise.c \
+    $(top_srcdir)/src/filters/edition/RotateCounterClockwise.c \
+    $(top_srcdir)/src/filters/edition/FlipVertical.c \
+    $(top_srcdir)/src/filters/edition/FlipHorizontal.c \
+    $(top_srcdir)/src/filters/convolution/Convolute.c
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/application/ArgumentParser.h \
@@ -375,29 +378,33 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/engine/FilterProcessor.h \
     $(top_srcdir)/include/engine/Filters.h \
     $(top_srcdir)/include/filters/None.h \
-    $(top_srcdir)/include/filters/Multiplier.h \
-    $(top_srcdir)/include/filters/Monochrome.h \
-    $(top_srcdir)/include/filters/Red.h \
-    $(top_srcdir)/include/filters/Green.h \
-    $(top_srcdir)/include/filters/Blue.h \
-    $(top_srcdir)/include/filters/Yellow.h \
-    $(top_srcdir)/include/filters/Cyan.h \
-    $(top_srcdir)/include/filters/Magenta.h \
-    $(top_srcdir)/include/filters/Sepia.h \
-    $(top_srcdir)/include/filters/Negative.h \
+    $(top_srcdir)/include/filters/multiplication/Multiplier.h \
+    $(top_srcdir)/include/filters/multiplication/Monochrome.h \
+    $(top_srcdir)/include/filters/multiplication/Red.h \
+    $(top_srcdir)/include/filters/multiplication/Green.h \
+    $(top_srcdir)/include/filters/multiplication/Blue.h \
+    $(top_srcdir)/include/filters/multiplication/Yellow.h \
+    $(top_srcdir)/include/filters/multiplication/Cyan.h \
+    $(top_srcdir)/include/filters/multiplication/Magenta.h \
+    $(top_srcdir)/include/filters/multiplication/Sepia.h \
+    $(top_srcdir)/include/filters/multiplication/Negative.h \
     $(top_srcdir)/include/filters/Grayscale.h \
     $(top_srcdir)/include/filters/Brightness.h \
     $(top_srcdir)/include/filters/Saturation.h \
-    $(top_srcdir)/include/filters/RotateClockwise.h \
-    $(top_srcdir)/include/filters/RotateCounterClockwise.h \
-    $(top_srcdir)/include/filters/FlipVertical.h \
-    $(top_srcdir)/include/filters/FlipHorizontal.h
+    $(top_srcdir)/include/filters/edition/RotateClockwise.h \
+    $(top_srcdir)/include/filters/edition/RotateCounterClockwise.h \
+    $(top_srcdir)/include/filters/edition/FlipVertical.h \
+    $(top_srcdir)/include/filters/edition/FlipHorizontal.h \
+    $(top_srcdir)/include/filters/convolution/Convolute.h
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
     -I$(top_srcdir)/include/application \
     -I$(top_srcdir)/include/application/stbi \
     -I$(top_srcdir)/include/engine \
-    -I$(top_srcdir)/include/filters
+    -I$(top_srcdir)/include/filters \
+    -I$(top_srcdir)/include/filters/multiplication \
+    -I$(top_srcdir)/include/filters/edition \
+    -I$(top_srcdir)/include/filters/convolution
 
 cimgfil_LDADD = -lm
 all: config.h
@@ -558,36 +565,42 @@ $(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/filters/cimgfil-None.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Multiplier.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Monochrome.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Red.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Green.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Blue.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Yellow.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Cyan.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Magenta.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Sepia.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-Negative.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/multiplication
+	@: > $(top_builddir)/src/filters/multiplication/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/multiplication/$(DEPDIR)
+	@: > $(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Red.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Green.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Blue.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/multiplication/cimgfil-Negative.$(OBJEXT):  \
+	$(top_builddir)/src/filters/multiplication/$(am__dirstamp) \
+	$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
 $(top_builddir)/src/filters/cimgfil-Grayscale.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
@@ -597,18 +610,33 @@ $(top_builddir)/src/filters/cimgfil-Brightness.$(OBJEXT):  \
 $(top_builddir)/src/filters/cimgfil-Saturation.$(OBJEXT):  \
 	$(top_builddir)/src/filters/$(am__dirstamp) \
 	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-RotateClockwise.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-FlipVertical.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
-$(top_builddir)/src/filters/cimgfil-FlipHorizontal.$(OBJEXT):  \
-	$(top_builddir)/src/filters/$(am__dirstamp) \
-	$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/edition
+	@: > $(top_builddir)/src/filters/edition/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/edition/$(DEPDIR)
+	@: > $(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.$(OBJEXT):  \
+	$(top_builddir)/src/filters/edition/$(am__dirstamp) \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.$(OBJEXT):  \
+	$(top_builddir)/src/filters/edition/$(am__dirstamp) \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.$(OBJEXT):  \
+	$(top_builddir)/src/filters/edition/$(am__dirstamp) \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.$(OBJEXT):  \
+	$(top_builddir)/src/filters/edition/$(am__dirstamp) \
+	$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/convolution/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/convolution
+	@: > $(top_builddir)/src/filters/convolution/$(am__dirstamp)
+$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) $(top_builddir)/src/filters/convolution/$(DEPDIR)
+	@: > $(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/convolution/cimgfil-Convolute.$(OBJEXT):  \
+	$(top_builddir)/src/filters/convolution/$(am__dirstamp) \
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
 
 cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEPENDENCIES) 
 	@rm -f cimgfil$(EXEEXT)
@@ -621,6 +649,9 @@ mostlyclean-compile:
 	-rm -f $(top_builddir)/src/application/stbi/*.$(OBJEXT)
 	-rm -f $(top_builddir)/src/engine/*.$(OBJEXT)
 	-rm -f $(top_builddir)/src/filters/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/filters/convolution/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/filters/edition/*.$(OBJEXT)
+	-rm -f $(top_builddir)/src/filters/multiplication/*.$(OBJEXT)
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -635,24 +666,25 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -830,145 +862,145 @@ $(top_builddir)/src/filters/cimgfil-None.obj: $(top_builddir)/src/filters/None.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-None.obj `if test -f '$(top_builddir)/src/filters/None.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/None.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/None.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Multiplier.o: $(top_builddir)/src/filters/Multiplier.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Multiplier.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Multiplier.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Multiplier.c' object='$(top_builddir)/src/filters/cimgfil-Multiplier.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.o: $(top_builddir)/src/filters/multiplication/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/multiplication/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Multiplier.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Multiplier.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.o `test -f '$(top_builddir)/src/filters/multiplication/Multiplier.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Multiplier.c
 
-$(top_builddir)/src/filters/cimgfil-Multiplier.obj: $(top_builddir)/src/filters/Multiplier.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Multiplier.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Multiplier.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Multiplier.c' object='$(top_builddir)/src/filters/cimgfil-Multiplier.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.obj: $(top_builddir)/src/filters/multiplication/Multiplier.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/multiplication/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Multiplier.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Multiplier.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Multiplier.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Multiplier.obj `if test -f '$(top_builddir)/src/filters/multiplication/Multiplier.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Multiplier.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Multiplier.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Monochrome.o: $(top_builddir)/src/filters/Monochrome.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Monochrome.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Monochrome.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Monochrome.c' object='$(top_builddir)/src/filters/cimgfil-Monochrome.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.o: $(top_builddir)/src/filters/multiplication/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/multiplication/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Monochrome.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Monochrome.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.o `test -f '$(top_builddir)/src/filters/multiplication/Monochrome.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Monochrome.c
 
-$(top_builddir)/src/filters/cimgfil-Monochrome.obj: $(top_builddir)/src/filters/Monochrome.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Monochrome.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Monochrome.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Monochrome.c' object='$(top_builddir)/src/filters/cimgfil-Monochrome.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.obj: $(top_builddir)/src/filters/multiplication/Monochrome.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/multiplication/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Monochrome.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Monochrome.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Monochrome.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Monochrome.obj `if test -f '$(top_builddir)/src/filters/multiplication/Monochrome.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Monochrome.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Monochrome.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Red.o: $(top_builddir)/src/filters/Red.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Red.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Red.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Red.c' object='$(top_builddir)/src/filters/cimgfil-Red.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Red.o: $(top_builddir)/src/filters/multiplication/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Red.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/multiplication/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Red.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Red.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Red.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Red.o `test -f '$(top_builddir)/src/filters/multiplication/Red.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Red.c
 
-$(top_builddir)/src/filters/cimgfil-Red.obj: $(top_builddir)/src/filters/Red.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Red.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Red.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Red.c' object='$(top_builddir)/src/filters/cimgfil-Red.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Red.obj: $(top_builddir)/src/filters/multiplication/Red.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Red.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/multiplication/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Red.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Red.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Red.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Red.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Red.obj `if test -f '$(top_builddir)/src/filters/multiplication/Red.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Red.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Red.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Green.o: $(top_builddir)/src/filters/Green.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Green.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Green.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Green.c' object='$(top_builddir)/src/filters/cimgfil-Green.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Green.o: $(top_builddir)/src/filters/multiplication/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Green.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/multiplication/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Green.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Green.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Green.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Green.o `test -f '$(top_builddir)/src/filters/multiplication/Green.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Green.c
 
-$(top_builddir)/src/filters/cimgfil-Green.obj: $(top_builddir)/src/filters/Green.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Green.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Green.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Green.c' object='$(top_builddir)/src/filters/cimgfil-Green.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Green.obj: $(top_builddir)/src/filters/multiplication/Green.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Green.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/multiplication/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Green.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Green.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Green.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Green.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Green.obj `if test -f '$(top_builddir)/src/filters/multiplication/Green.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Green.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Green.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Blue.o: $(top_builddir)/src/filters/Blue.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Blue.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Blue.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Blue.c' object='$(top_builddir)/src/filters/cimgfil-Blue.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Blue.o: $(top_builddir)/src/filters/multiplication/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Blue.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/multiplication/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Blue.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Blue.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Blue.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Blue.o `test -f '$(top_builddir)/src/filters/multiplication/Blue.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Blue.c
 
-$(top_builddir)/src/filters/cimgfil-Blue.obj: $(top_builddir)/src/filters/Blue.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Blue.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Blue.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Blue.c' object='$(top_builddir)/src/filters/cimgfil-Blue.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Blue.obj: $(top_builddir)/src/filters/multiplication/Blue.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Blue.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/multiplication/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Blue.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Blue.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Blue.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Blue.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Blue.obj `if test -f '$(top_builddir)/src/filters/multiplication/Blue.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Blue.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Blue.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Yellow.o: $(top_builddir)/src/filters/Yellow.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Yellow.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Yellow.o `test -f '$(top_builddir)/src/filters/Yellow.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Yellow.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Yellow.c' object='$(top_builddir)/src/filters/cimgfil-Yellow.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.o: $(top_builddir)/src/filters/multiplication/Yellow.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.o `test -f '$(top_builddir)/src/filters/multiplication/Yellow.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Yellow.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Yellow.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Yellow.o `test -f '$(top_builddir)/src/filters/Yellow.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Yellow.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.o `test -f '$(top_builddir)/src/filters/multiplication/Yellow.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Yellow.c
 
-$(top_builddir)/src/filters/cimgfil-Yellow.obj: $(top_builddir)/src/filters/Yellow.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Yellow.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Yellow.obj `if test -f '$(top_builddir)/src/filters/Yellow.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Yellow.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Yellow.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Yellow.c' object='$(top_builddir)/src/filters/cimgfil-Yellow.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.obj: $(top_builddir)/src/filters/multiplication/Yellow.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.obj `if test -f '$(top_builddir)/src/filters/multiplication/Yellow.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Yellow.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Yellow.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Yellow.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Yellow.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Yellow.obj `if test -f '$(top_builddir)/src/filters/Yellow.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Yellow.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Yellow.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Yellow.obj `if test -f '$(top_builddir)/src/filters/multiplication/Yellow.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Yellow.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Yellow.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Cyan.o: $(top_builddir)/src/filters/Cyan.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Cyan.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Cyan.o `test -f '$(top_builddir)/src/filters/Cyan.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Cyan.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Cyan.c' object='$(top_builddir)/src/filters/cimgfil-Cyan.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.o: $(top_builddir)/src/filters/multiplication/Cyan.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.o `test -f '$(top_builddir)/src/filters/multiplication/Cyan.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Cyan.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Cyan.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Cyan.o `test -f '$(top_builddir)/src/filters/Cyan.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Cyan.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.o `test -f '$(top_builddir)/src/filters/multiplication/Cyan.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Cyan.c
 
-$(top_builddir)/src/filters/cimgfil-Cyan.obj: $(top_builddir)/src/filters/Cyan.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Cyan.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Cyan.obj `if test -f '$(top_builddir)/src/filters/Cyan.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Cyan.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Cyan.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Cyan.c' object='$(top_builddir)/src/filters/cimgfil-Cyan.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.obj: $(top_builddir)/src/filters/multiplication/Cyan.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.obj `if test -f '$(top_builddir)/src/filters/multiplication/Cyan.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Cyan.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Cyan.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Cyan.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Cyan.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Cyan.obj `if test -f '$(top_builddir)/src/filters/Cyan.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Cyan.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Cyan.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Cyan.obj `if test -f '$(top_builddir)/src/filters/multiplication/Cyan.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Cyan.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Cyan.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Magenta.o: $(top_builddir)/src/filters/Magenta.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Magenta.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Magenta.o `test -f '$(top_builddir)/src/filters/Magenta.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Magenta.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Magenta.c' object='$(top_builddir)/src/filters/cimgfil-Magenta.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.o: $(top_builddir)/src/filters/multiplication/Magenta.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.o `test -f '$(top_builddir)/src/filters/multiplication/Magenta.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Magenta.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Magenta.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Magenta.o `test -f '$(top_builddir)/src/filters/Magenta.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Magenta.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.o `test -f '$(top_builddir)/src/filters/multiplication/Magenta.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Magenta.c
 
-$(top_builddir)/src/filters/cimgfil-Magenta.obj: $(top_builddir)/src/filters/Magenta.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Magenta.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Magenta.obj `if test -f '$(top_builddir)/src/filters/Magenta.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Magenta.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Magenta.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Magenta.c' object='$(top_builddir)/src/filters/cimgfil-Magenta.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.obj: $(top_builddir)/src/filters/multiplication/Magenta.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.obj `if test -f '$(top_builddir)/src/filters/multiplication/Magenta.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Magenta.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Magenta.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Magenta.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Magenta.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Magenta.obj `if test -f '$(top_builddir)/src/filters/Magenta.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Magenta.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Magenta.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Magenta.obj `if test -f '$(top_builddir)/src/filters/multiplication/Magenta.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Magenta.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Magenta.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Sepia.o: $(top_builddir)/src/filters/Sepia.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Sepia.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Sepia.o `test -f '$(top_builddir)/src/filters/Sepia.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Sepia.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Sepia.c' object='$(top_builddir)/src/filters/cimgfil-Sepia.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.o: $(top_builddir)/src/filters/multiplication/Sepia.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.o `test -f '$(top_builddir)/src/filters/multiplication/Sepia.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Sepia.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Sepia.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Sepia.o `test -f '$(top_builddir)/src/filters/Sepia.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Sepia.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.o `test -f '$(top_builddir)/src/filters/multiplication/Sepia.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Sepia.c
 
-$(top_builddir)/src/filters/cimgfil-Sepia.obj: $(top_builddir)/src/filters/Sepia.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Sepia.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Sepia.obj `if test -f '$(top_builddir)/src/filters/Sepia.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Sepia.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Sepia.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Sepia.c' object='$(top_builddir)/src/filters/cimgfil-Sepia.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.obj: $(top_builddir)/src/filters/multiplication/Sepia.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.obj `if test -f '$(top_builddir)/src/filters/multiplication/Sepia.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Sepia.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Sepia.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Sepia.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Sepia.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Sepia.obj `if test -f '$(top_builddir)/src/filters/Sepia.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Sepia.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Sepia.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Sepia.obj `if test -f '$(top_builddir)/src/filters/multiplication/Sepia.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Sepia.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Sepia.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-Negative.o: $(top_builddir)/src/filters/Negative.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Negative.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Negative.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Negative.c' object='$(top_builddir)/src/filters/cimgfil-Negative.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Negative.o: $(top_builddir)/src/filters/multiplication/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Negative.o -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/multiplication/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Negative.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Negative.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Negative.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Negative.o `test -f '$(top_builddir)/src/filters/multiplication/Negative.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/multiplication/Negative.c
 
-$(top_builddir)/src/filters/cimgfil-Negative.obj: $(top_builddir)/src/filters/Negative.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Negative.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Negative.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/Negative.c' object='$(top_builddir)/src/filters/cimgfil-Negative.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/multiplication/cimgfil-Negative.obj: $(top_builddir)/src/filters/multiplication/Negative.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/multiplication/cimgfil-Negative.obj -MD -MP -MF $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Tpo -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/multiplication/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Negative.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Tpo $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/multiplication/Negative.c' object='$(top_builddir)/src/filters/multiplication/cimgfil-Negative.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Negative.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/multiplication/cimgfil-Negative.obj `if test -f '$(top_builddir)/src/filters/multiplication/Negative.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/multiplication/Negative.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/multiplication/Negative.c'; fi`
 
 $(top_builddir)/src/filters/cimgfil-Grayscale.o: $(top_builddir)/src/filters/Grayscale.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-Grayscale.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Tpo -c -o $(top_builddir)/src/filters/cimgfil-Grayscale.o `test -f '$(top_builddir)/src/filters/Grayscale.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/Grayscale.c
@@ -1012,61 +1044,75 @@ $(top_builddir)/src/filters/cimgfil-Saturation.obj: $(top_builddir)/src/filters/
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-Saturation.obj `if test -f '$(top_builddir)/src/filters/Saturation.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/Saturation.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/Saturation.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-RotateClockwise.o: $(top_builddir)/src/filters/RotateClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-RotateClockwise.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Tpo -c -o $(top_builddir)/src/filters/cimgfil-RotateClockwise.o `test -f '$(top_builddir)/src/filters/RotateClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/RotateClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/RotateClockwise.c' object='$(top_builddir)/src/filters/cimgfil-RotateClockwise.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.o: $(top_builddir)/src/filters/edition/RotateClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.o -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.o `test -f '$(top_builddir)/src/filters/edition/RotateClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/RotateClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/RotateClockwise.c' object='$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-RotateClockwise.o `test -f '$(top_builddir)/src/filters/RotateClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/RotateClockwise.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.o `test -f '$(top_builddir)/src/filters/edition/RotateClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/RotateClockwise.c
 
-$(top_builddir)/src/filters/cimgfil-RotateClockwise.obj: $(top_builddir)/src/filters/RotateClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-RotateClockwise.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Tpo -c -o $(top_builddir)/src/filters/cimgfil-RotateClockwise.obj `if test -f '$(top_builddir)/src/filters/RotateClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/RotateClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/RotateClockwise.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/RotateClockwise.c' object='$(top_builddir)/src/filters/cimgfil-RotateClockwise.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.obj: $(top_builddir)/src/filters/edition/RotateClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.obj -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.obj `if test -f '$(top_builddir)/src/filters/edition/RotateClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/RotateClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/RotateClockwise.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/RotateClockwise.c' object='$(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-RotateClockwise.obj `if test -f '$(top_builddir)/src/filters/RotateClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/RotateClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/RotateClockwise.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateClockwise.obj `if test -f '$(top_builddir)/src/filters/edition/RotateClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/RotateClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/RotateClockwise.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.o: $(top_builddir)/src/filters/RotateCounterClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo -c -o $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.o `test -f '$(top_builddir)/src/filters/RotateCounterClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/RotateCounterClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/RotateCounterClockwise.c' object='$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.o: $(top_builddir)/src/filters/edition/RotateCounterClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.o -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.o `test -f '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/RotateCounterClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/RotateCounterClockwise.c' object='$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.o `test -f '$(top_builddir)/src/filters/RotateCounterClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/RotateCounterClockwise.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.o `test -f '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/RotateCounterClockwise.c
 
-$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.obj: $(top_builddir)/src/filters/RotateCounterClockwise.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo -c -o $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.obj `if test -f '$(top_builddir)/src/filters/RotateCounterClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/RotateCounterClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/RotateCounterClockwise.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/RotateCounterClockwise.c' object='$(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.obj: $(top_builddir)/src/filters/edition/RotateCounterClockwise.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.obj -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.obj `if test -f '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/RotateCounterClockwise.c' object='$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-RotateCounterClockwise.obj `if test -f '$(top_builddir)/src/filters/RotateCounterClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/RotateCounterClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/RotateCounterClockwise.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.obj `if test -f '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/RotateCounterClockwise.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-FlipVertical.o: $(top_builddir)/src/filters/FlipVertical.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-FlipVertical.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Tpo -c -o $(top_builddir)/src/filters/cimgfil-FlipVertical.o `test -f '$(top_builddir)/src/filters/FlipVertical.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/FlipVertical.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/FlipVertical.c' object='$(top_builddir)/src/filters/cimgfil-FlipVertical.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.o: $(top_builddir)/src/filters/edition/FlipVertical.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.o -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.o `test -f '$(top_builddir)/src/filters/edition/FlipVertical.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/FlipVertical.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/FlipVertical.c' object='$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-FlipVertical.o `test -f '$(top_builddir)/src/filters/FlipVertical.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/FlipVertical.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.o `test -f '$(top_builddir)/src/filters/edition/FlipVertical.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/FlipVertical.c
 
-$(top_builddir)/src/filters/cimgfil-FlipVertical.obj: $(top_builddir)/src/filters/FlipVertical.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-FlipVertical.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Tpo -c -o $(top_builddir)/src/filters/cimgfil-FlipVertical.obj `if test -f '$(top_builddir)/src/filters/FlipVertical.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/FlipVertical.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/FlipVertical.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/FlipVertical.c' object='$(top_builddir)/src/filters/cimgfil-FlipVertical.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.obj: $(top_builddir)/src/filters/edition/FlipVertical.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.obj -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.obj `if test -f '$(top_builddir)/src/filters/edition/FlipVertical.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/FlipVertical.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/FlipVertical.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/FlipVertical.c' object='$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-FlipVertical.obj `if test -f '$(top_builddir)/src/filters/FlipVertical.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/FlipVertical.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/FlipVertical.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipVertical.obj `if test -f '$(top_builddir)/src/filters/edition/FlipVertical.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/FlipVertical.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/FlipVertical.c'; fi`
 
-$(top_builddir)/src/filters/cimgfil-FlipHorizontal.o: $(top_builddir)/src/filters/FlipHorizontal.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-FlipHorizontal.o -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo -c -o $(top_builddir)/src/filters/cimgfil-FlipHorizontal.o `test -f '$(top_builddir)/src/filters/FlipHorizontal.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/FlipHorizontal.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/FlipHorizontal.c' object='$(top_builddir)/src/filters/cimgfil-FlipHorizontal.o' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.o: $(top_builddir)/src/filters/edition/FlipHorizontal.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.o -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.o `test -f '$(top_builddir)/src/filters/edition/FlipHorizontal.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/FlipHorizontal.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/FlipHorizontal.c' object='$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-FlipHorizontal.o `test -f '$(top_builddir)/src/filters/FlipHorizontal.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/FlipHorizontal.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.o `test -f '$(top_builddir)/src/filters/edition/FlipHorizontal.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/edition/FlipHorizontal.c
 
-$(top_builddir)/src/filters/cimgfil-FlipHorizontal.obj: $(top_builddir)/src/filters/FlipHorizontal.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/cimgfil-FlipHorizontal.obj -MD -MP -MF $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo -c -o $(top_builddir)/src/filters/cimgfil-FlipHorizontal.obj `if test -f '$(top_builddir)/src/filters/FlipHorizontal.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/FlipHorizontal.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/FlipHorizontal.c'; fi`
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/FlipHorizontal.c' object='$(top_builddir)/src/filters/cimgfil-FlipHorizontal.obj' libtool=no @AMDEPBACKSLASH@
+$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.obj: $(top_builddir)/src/filters/edition/FlipHorizontal.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.obj -MD -MP -MF $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.obj `if test -f '$(top_builddir)/src/filters/edition/FlipHorizontal.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/FlipHorizontal.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/FlipHorizontal.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Tpo $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/edition/FlipHorizontal.c' object='$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/cimgfil-FlipHorizontal.obj `if test -f '$(top_builddir)/src/filters/FlipHorizontal.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/FlipHorizontal.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/FlipHorizontal.c'; fi`
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.obj `if test -f '$(top_builddir)/src/filters/edition/FlipHorizontal.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/edition/FlipHorizontal.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/edition/FlipHorizontal.c'; fi`
+
+$(top_builddir)/src/filters/convolution/cimgfil-Convolute.o: $(top_builddir)/src/filters/convolution/Convolute.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-Convolute.o -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-Convolute.o `test -f '$(top_builddir)/src/filters/convolution/Convolute.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/Convolute.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/Convolute.c' object='$(top_builddir)/src/filters/convolution/cimgfil-Convolute.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-Convolute.o `test -f '$(top_builddir)/src/filters/convolution/Convolute.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/Convolute.c
+
+$(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj: $(top_builddir)/src/filters/convolution/Convolute.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj `if test -f '$(top_builddir)/src/filters/convolution/Convolute.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/Convolute.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/Convolute.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/Convolute.c' object='$(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj `if test -f '$(top_builddir)/src/filters/convolution/Convolute.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/Convolute.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/Convolute.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -1336,6 +1382,12 @@ distclean-generic:
 	-test -z "$(top_builddir)/src/engine/$(am__dirstamp)" || rm -f $(top_builddir)/src/engine/$(am__dirstamp)
 	-test -z "$(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/$(DEPDIR)/$(am__dirstamp)
 	-test -z "$(top_builddir)/src/filters/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/convolution/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/convolution/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/edition/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/edition/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/$(am__dirstamp)
+	-test -z "$(top_builddir)/src/filters/multiplication/$(am__dirstamp)" || rm -f $(top_builddir)/src/filters/multiplication/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -1356,24 +1408,25 @@ distclean: distclean-am
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -1431,24 +1484,25 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(top_builddir)/src/application/stbi/$(DEPDIR)/cimgfil-stb_image_write.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-FilterProcessor.Po
 	-rm -f $(top_builddir)/src/engine/$(DEPDIR)/cimgfil-Filters.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Blue.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Brightness.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Cyan.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipHorizontal.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-FlipVertical.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Green.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Magenta.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Monochrome.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Multiplier.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Negative.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Red.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateClockwise.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Sepia.Po
-	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Yellow.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po
+	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateCounterClockwise.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Blue.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Cyan.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Green.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Magenta.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Monochrome.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Multiplier.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Negative.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Red.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Sepia.Po
+	-rm -f $(top_builddir)/src/filters/multiplication/$(DEPDIR)/cimgfil-Yellow.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

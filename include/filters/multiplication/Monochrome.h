@@ -2,7 +2,6 @@
 #define MONOCHROME_H
 
 #include <argz.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 

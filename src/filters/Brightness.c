@@ -40,7 +40,7 @@ static int Function(FilterFunctionArguments *arguments)
 
     int brightness = ((BrightnessUserData *)userData)->brightness;
 
-    if (channels == 1 || channels == 2)
+    if (channels < 3)
     {
         for (int index = chunk->startPixelIndex; index < chunk->endPixelIndex; index++)
         {
