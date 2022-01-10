@@ -131,7 +131,9 @@ am_cimgfil_OBJECTS = $(top_builddir)/src/cimgfil-main.$(OBJEXT) \
 	$(top_builddir)/src/filters/edition/cimgfil-RotateCounterClockwise.$(OBJEXT) \
 	$(top_builddir)/src/filters/edition/cimgfil-FlipVertical.$(OBJEXT) \
 	$(top_builddir)/src/filters/edition/cimgfil-FlipHorizontal.$(OBJEXT) \
-	$(top_builddir)/src/filters/convolution/cimgfil-Convolute.$(OBJEXT)
+	$(top_builddir)/src/filters/convolution/cimgfil-Convolute.$(OBJEXT) \
+	$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.$(OBJEXT) \
+	$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.$(OBJEXT)
 cimgfil_OBJECTS = $(am_cimgfil_OBJECTS)
 cimgfil_DEPENDENCIES =
 AM_V_P = $(am__v_P_@AM_V@)
@@ -163,7 +165,9 @@ am__depfiles_remade = $(top_builddir)/src/$(DEPDIR)/cimgfil-main.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po \
 	$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po \
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po \
 	$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po \
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po \
 	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po \
 	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po \
 	$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po \
@@ -364,7 +368,9 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/filters/edition/RotateCounterClockwise.c \
     $(top_srcdir)/src/filters/edition/FlipVertical.c \
     $(top_srcdir)/src/filters/edition/FlipHorizontal.c \
-    $(top_srcdir)/src/filters/convolution/Convolute.c
+    $(top_srcdir)/src/filters/convolution/Convolute.c \
+    $(top_srcdir)/src/filters/convolution/BoxBlur.c \
+    $(top_srcdir)/src/filters/convolution/Sharpen.c
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/application/ArgumentParser.h \
@@ -395,7 +401,9 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/filters/edition/RotateCounterClockwise.h \
     $(top_srcdir)/include/filters/edition/FlipVertical.h \
     $(top_srcdir)/include/filters/edition/FlipHorizontal.h \
-    $(top_srcdir)/include/filters/convolution/Convolute.h
+    $(top_srcdir)/include/filters/convolution/Convolute.h \
+    $(top_srcdir)/include/filters/convolution/BoxBlur.h \
+    $(top_srcdir)/include/filters/convolution/Sharpen.h
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \
     -I$(top_srcdir)/include/application \
@@ -637,6 +645,12 @@ $(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp):
 $(top_builddir)/src/filters/convolution/cimgfil-Convolute.$(OBJEXT):  \
 	$(top_builddir)/src/filters/convolution/$(am__dirstamp) \
 	$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.$(OBJEXT):  \
+	$(top_builddir)/src/filters/convolution/$(am__dirstamp) \
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
+$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.$(OBJEXT):  \
+	$(top_builddir)/src/filters/convolution/$(am__dirstamp) \
+	$(top_builddir)/src/filters/convolution/$(DEPDIR)/$(am__dirstamp)
 
 cimgfil$(EXEEXT): $(cimgfil_OBJECTS) $(cimgfil_DEPENDENCIES) $(EXTRA_cimgfil_DEPENDENCIES) 
 	@rm -f cimgfil$(EXEEXT)
@@ -670,7 +684,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@$(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po@am__quote@ # am--include-marker
@@ -1114,6 +1130,34 @@ $(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj: $(top_builddir)/s
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-Convolute.obj `if test -f '$(top_builddir)/src/filters/convolution/Convolute.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/Convolute.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/Convolute.c'; fi`
 
+$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.o: $(top_builddir)/src/filters/convolution/BoxBlur.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.o -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.o `test -f '$(top_builddir)/src/filters/convolution/BoxBlur.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/BoxBlur.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/BoxBlur.c' object='$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.o `test -f '$(top_builddir)/src/filters/convolution/BoxBlur.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/BoxBlur.c
+
+$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.obj: $(top_builddir)/src/filters/convolution/BoxBlur.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.obj -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.obj `if test -f '$(top_builddir)/src/filters/convolution/BoxBlur.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/BoxBlur.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/BoxBlur.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/BoxBlur.c' object='$(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-BoxBlur.obj `if test -f '$(top_builddir)/src/filters/convolution/BoxBlur.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/BoxBlur.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/BoxBlur.c'; fi`
+
+$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.o: $(top_builddir)/src/filters/convolution/Sharpen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.o -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.o `test -f '$(top_builddir)/src/filters/convolution/Sharpen.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/Sharpen.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/Sharpen.c' object='$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.o `test -f '$(top_builddir)/src/filters/convolution/Sharpen.c' || echo '$(srcdir)/'`$(top_builddir)/src/filters/convolution/Sharpen.c
+
+$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.obj: $(top_builddir)/src/filters/convolution/Sharpen.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.obj -MD -MP -MF $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Tpo -c -o $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.obj `if test -f '$(top_builddir)/src/filters/convolution/Sharpen.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/Sharpen.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/Sharpen.c'; fi`
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Tpo $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='$(top_builddir)/src/filters/convolution/Sharpen.c' object='$(top_builddir)/src/filters/convolution/cimgfil-Sharpen.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(cimgfil_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o $(top_builddir)/src/filters/convolution/cimgfil-Sharpen.obj `if test -f '$(top_builddir)/src/filters/convolution/Sharpen.c'; then $(CYGPATH_W) '$(top_builddir)/src/filters/convolution/Sharpen.c'; else $(CYGPATH_W) '$(srcdir)/$(top_builddir)/src/filters/convolution/Sharpen.c'; fi`
+
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
 tags: tags-am
@@ -1412,7 +1456,9 @@ distclean: distclean-am
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po
 	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po
@@ -1488,7 +1534,9 @@ maintainer-clean: maintainer-clean-am
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Grayscale.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-None.Po
 	-rm -f $(top_builddir)/src/filters/$(DEPDIR)/cimgfil-Saturation.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-BoxBlur.Po
 	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Convolute.Po
+	-rm -f $(top_builddir)/src/filters/convolution/$(DEPDIR)/cimgfil-Sharpen.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipHorizontal.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-FlipVertical.Po
 	-rm -f $(top_builddir)/src/filters/edition/$(DEPDIR)/cimgfil-RotateClockwise.Po

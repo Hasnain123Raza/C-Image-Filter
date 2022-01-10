@@ -22,6 +22,8 @@
 #include "FlipVertical.h"
 #include "FlipHorizontal.h"
 #include "Convolute.h"
+#include "BoxBlur.h"
+#include "Sharpen.h"
 
 Filter *getFilterFromFilterId(FilterID filterId);
 

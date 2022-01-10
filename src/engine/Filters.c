@@ -63,6 +63,12 @@ Filter *getFilterFromFilterId(FilterID filterId)
         case FILTER_CONVOLUTE:
             filter = &Convolute;
             break;
+        case FILTER_BOX_BLUR:
+            filter = &BoxBlur;
+            break;
+        case FILTER_SHARPEN:
+            filter = &Sharpen;
+            break;
         default:
             break;
     }

@@ -103,7 +103,6 @@ static int Function(FilterFunctionArguments *arguments)
         for (int kernelY = 0; kernelY < rows; kernelY++)
         {
             int sourceYOffset = sourceY + kernelY - (rows / 2);
-            
 
             for (int kernelX = 0; kernelX < columns; kernelX++)
             {

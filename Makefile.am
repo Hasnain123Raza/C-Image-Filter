@@ -28,7 +28,9 @@ cimgfil_SOURCES = $(top_srcdir)/src/main.c \
     $(top_srcdir)/src/filters/edition/RotateCounterClockwise.c \
     $(top_srcdir)/src/filters/edition/FlipVertical.c \
     $(top_srcdir)/src/filters/edition/FlipHorizontal.c \
-    $(top_srcdir)/src/filters/convolution/Convolute.c
+    $(top_srcdir)/src/filters/convolution/Convolute.c \
+    $(top_srcdir)/src/filters/convolution/BoxBlur.c \
+    $(top_srcdir)/src/filters/convolution/Sharpen.c
 
 
 EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
@@ -60,7 +62,9 @@ EXTRA_DIST = $(top_srcdir)/include/application/ApplicationCommon.h \
     $(top_srcdir)/include/filters/edition/RotateCounterClockwise.h \
     $(top_srcdir)/include/filters/edition/FlipVertical.h \
     $(top_srcdir)/include/filters/edition/FlipHorizontal.h \
-    $(top_srcdir)/include/filters/convolution/Convolute.h
+    $(top_srcdir)/include/filters/convolution/Convolute.h \
+    $(top_srcdir)/include/filters/convolution/BoxBlur.h \
+    $(top_srcdir)/include/filters/convolution/Sharpen.h
 
 
 cimgfil_CPPFLAGS = -I$(top_srcdir)/include \

@@ -78,6 +78,10 @@ The available filters are as follows:
 
 18  FILTER_CONVOLUTION
 
+19  FILTER_BOX_BLUR
+
+20  FILTER_SHARPEN
+
 ### Filter Arguments
 
 > [arguments...]
