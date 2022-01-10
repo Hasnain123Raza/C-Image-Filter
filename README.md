@@ -4,7 +4,7 @@
 
 This is a C program for modifying images using some filters.
 
-Note: This program has only been tested with jpg images with three channels. For the time being, please only input jpg images with three channels.
+Note: This program can read a lot of image formats but write only jpeg and png.
 
 ## Implementation Details
 
@@ -26,13 +26,19 @@ This argument is used to specify the input filename. It is optional and defaults
 
 This argument is used to specify the output filename. It is optional and defaults to `output.jpg`.
 
+### Threads
+
+> -t, --threads[=NUMBER]
+
+This argument is used to specify the number of threads. Note, it is only available in multithreaded build.
+
 ### Filter
 
 > -f, --filter[=FILTERID]
 
 This argument is used to specify the filter to use. It is optional and defaults to `0`.
 
-The avaialable filters are as follows:
+The available filters are as follows:
 
 0   FILTER_NONE
 

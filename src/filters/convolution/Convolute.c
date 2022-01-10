@@ -1,6 +1,14 @@
 #include "Convolute.h"
 
+typedef enum {
+    EDGE_MODE_EXTEND,
+    EDGE_MODE_WRAP,
+    EDGE_MODE_MIRROR,
+    TOTAL_EDGE_MODE
+} EdgeMode;
+
 typedef struct {
+    EdgeMode edgeMode;
     int rows;
     int columns;
     float *kernel;
@@ -23,9 +31,13 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
         return 1;
     
     EngineArguments *arguments = filterRequest->arguments;
-    char *rowsArgument = argz_next(arguments->value, arguments->length, NULL);
+    char *edgeModeArgument = argz_next(arguments->value, arguments->length, NULL);
+    char *rowsArgument = edgeModeArgument ? argz_next(arguments->value, arguments->length, edgeModeArgument) : NULL;
     char *columnsArgument = rowsArgument ? argz_next(arguments->value, arguments->length, rowsArgument) : NULL;
 
+    int edgeMode = atoi(edgeModeArgument);
+    if (edgeMode < 0 || edgeMode >= TOTAL_EDGE_MODE)
+        edgeMode = EDGE_MODE_EXTEND;
     int rows = atoi(rowsArgument);
     int columns = atoi(columnsArgument);
 
@@ -51,6 +63,7 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
         currentArgument = value;
     }
 
+    userData->edgeMode = edgeMode;
     userData->rows = rows;
     userData->columns = columns;
     userData->kernel = kernel;
@@ -67,6 +80,7 @@ static int Function(FilterFunctionArguments *arguments)
     void *userData = arguments->userData;
 
     ConvoluteUserData *convoluteUserData = (ConvoluteUserData *)userData;
+    int edgeMode = convoluteUserData->edgeMode;
     int rows = convoluteUserData->rows;
     int columns = convoluteUserData->columns;
     float *kernel = convoluteUserData->kernel;
@@ -89,18 +103,72 @@ static int Function(FilterFunctionArguments *arguments)
         for (int kernelY = 0; kernelY < rows; kernelY++)
         {
             int sourceYOffset = sourceY + kernelY - (rows / 2);
-            if (sourceYOffset < 0)
-                sourceYOffset = sourceHeight - (abs(sourceYOffset) % sourceHeight);
-            else if (sourceYOffset >= sourceHeight)
-                sourceYOffset = sourceYOffset % sourceHeight;
+            
 
             for (int kernelX = 0; kernelX < columns; kernelX++)
             {
                 int sourceXOffset = sourceX + kernelX - (columns / 2);
-                if (sourceXOffset < 0)
-                    sourceXOffset = sourceWidth - (abs(sourceXOffset) % sourceWidth);
-                else if (sourceXOffset >= sourceWidth)
-                    sourceXOffset = sourceXOffset % sourceWidth;
+
+                switch (edgeMode)
+                {
+                    case EDGE_MODE_EXTEND:
+                        {
+                            if (sourceYOffset < 0)
+                                sourceYOffset = 0;
+                            else if (sourceYOffset >= sourceHeight)
+                                sourceYOffset = sourceHeight - 1;
+                            
+                            if (sourceXOffset < 0)
+                                sourceXOffset = 0;
+                            else if (sourceXOffset >= sourceWidth)
+                                sourceXOffset = sourceWidth - 1;
+                        }
+                        break;
+
+                    case EDGE_MODE_WRAP:
+                        {
+                            if (sourceYOffset < 0)
+                                sourceYOffset = sourceHeight - (abs(sourceYOffset) % sourceHeight);
+                            else if (sourceYOffset >= sourceHeight)
+                                sourceYOffset = sourceYOffset % sourceHeight;
+                            
+                            if (sourceXOffset < 0)
+                                sourceXOffset = sourceWidth - (abs(sourceXOffset) % sourceWidth);
+                            else if (sourceXOffset >= sourceWidth)
+                                sourceXOffset = sourceXOffset % sourceWidth;
+                        }
+                        break;
+                    
+                    case EDGE_MODE_MIRROR:
+                        {
+                            if (sourceYOffset < 0)
+                            {
+                                sourceYOffset = (2 * sourceHeight) - (abs(sourceYOffset) % (2 * sourceHeight));
+                                if (sourceYOffset >= sourceHeight)
+                                    sourceYOffset = (2 * sourceHeight) - sourceYOffset;
+                            }
+                            else if (sourceYOffset >= sourceHeight)
+                            {
+                                sourceYOffset = sourceYOffset % (2 * sourceHeight);
+                                if (sourceYOffset >= sourceHeight)
+                                    sourceYOffset = (2 * sourceHeight) - sourceYOffset - 1;
+                            }
+
+                            if (sourceXOffset < 0)
+                            {
+                                sourceXOffset = (2 * sourceWidth) - (abs(sourceXOffset) % (2 * sourceWidth));
+                                if (sourceXOffset >= sourceWidth)
+                                    sourceXOffset = (2 * sourceWidth) - sourceXOffset;
+                            }
+                            else if (sourceXOffset >= sourceWidth)
+                            {
+                                sourceXOffset = sourceXOffset % (2 * sourceWidth);
+                                if (sourceXOffset >= sourceWidth)
+                                    sourceXOffset = (2 * sourceWidth) - sourceXOffset - 1;
+                            }
+                        }
+                        break;
+                }
 
                 int sourceIndex = sourceYOffset * sourceWidth + sourceXOffset;
                 int kernelIndex = kernelY * columns + kernelX;
