@@ -12,16 +12,16 @@ Filter BoxBlur = {
 static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData, FilterConfigurations *configurations)
 {
     EngineArguments *arguments = filterRequest->arguments;
-    char *kernelSizeArgument = argz_next(arguments->value, arguments->length, NULL);
-    char *blurStrengthArgument = kernelSizeArgument ? argz_next(arguments->value, arguments->length, kernelSizeArgument) : NULL;
+    char *blurSizeArgument = argz_next(arguments->value, arguments->length, NULL);
+    char *blurStrengthArgument = blurSizeArgument ? argz_next(arguments->value, arguments->length, blurSizeArgument) : NULL;
 
-    if (!kernelSizeArgument || !blurStrengthArgument)
+    if (!blurSizeArgument || !blurStrengthArgument)
         return 1;
 
-    int kernelSize = atoi(kernelSizeArgument);
+    int blurSize = atoi(blurSizeArgument);
     float blurStrength = atof(blurStrengthArgument);
 
-    if (kernelSize < 2)
+    if (blurSize < 2)
         return 1;
 
     if (blurStrength < 0.0f || blurStrength > 1.0f)
@@ -45,8 +45,9 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     prefilters[0] = convoluteFilterRequest;
     convoluteFilterRequest->filterId = FILTER_CONVOLUTE;
 
-    float targetPixelValue = 1 / (1 + (kernelSize * kernelSize - 1) * blurStrength);
-    float neighbourPixelValue = blurStrength * targetPixelValue;
+    int kernelSize = blurSize * blurSize;
+    float neighbourPixelValue = (1.0f / kernelSize) * blurStrength;
+    float targetPixelValue = 1 - (kernelSize - 1) * neighbourPixelValue;
     int targetPixelBufferLength = snprintf(NULL, 0, "%f", targetPixelValue);
     int neighbourPixelBufferLength = snprintf(NULL, 0, "%f", neighbourPixelValue);
     char *targetPixelBuffer = (char *)malloc(targetPixelBufferLength + 1);
@@ -72,13 +73,13 @@ static int Configurator(FilterRequest *filterRequest, ImageData *sourceImageData
     convoluteArguments->length = 0;
     convoluteArguments->value = NULL;
     argz_add(&convoluteArguments->value, &convoluteArguments->length, "2");
-    argz_add(&convoluteArguments->value, &convoluteArguments->length, kernelSizeArgument);
-    argz_add(&convoluteArguments->value, &convoluteArguments->length, kernelSizeArgument);
-    for (int x = 0; x < kernelSize; x++)
+    argz_add(&convoluteArguments->value, &convoluteArguments->length, blurSizeArgument);
+    argz_add(&convoluteArguments->value, &convoluteArguments->length, blurSizeArgument);
+    for (int x = 0; x < blurSize; x++)
     {
-        for (int y = 0; y < kernelSize; y++)
+        for (int y = 0; y < blurSize; y++)
         {
-            if (x == kernelSize / 2 && y == kernelSize / 2)
+            if (x == blurSize / 2 && y == blurSize / 2)
                 argz_add(&convoluteArguments->value, &convoluteArguments->length, targetPixelBuffer);
             else
                 argz_add(&convoluteArguments->value, &convoluteArguments->length, neighbourPixelBuffer);
